@@ -5,17 +5,43 @@ using UnityEngine;
 public class SyukuHands : MonoBehaviour
 {
     //自身のTransform
-    [SerializeField] 
+    [SerializeField]
     private Transform _armsTra;
 
     //ターゲットのTransform
-    [SerializeField] private Transform _target;
+    [SerializeField]
+    private Transform _target;
 
+    //プレイヤータグ取得用
+    [SerializeField]
+    private GameObject _marimo;
+
+    //手を向かせたい方向
     private Vector3 dir;
-    private Vector3 dir2;
 
     // Update is called once per frame
     void Update()
+    {
+        HandsMove();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "AMAI" || collision.gameObject.tag == "NORMAL")
+        {
+            //プレイヤーを子オブジェクトにする、ツタにくっつける
+            collision.gameObject.transform.parent = this.gameObject.transform;
+            Debug.Log("キャッチ");
+        }
+        else if (collision.gameObject.tag == "MAZUI")
+        {
+            //プレイヤー子オブジェクト解除、ツタから離す
+            collision.gameObject.transform.parent = null;
+            Debug.Log("触れない");
+        }
+    }
+
+    private void HandsMove()
     {
         //向きたい方向を計算
         dir = (_target.position - _armsTra.position);

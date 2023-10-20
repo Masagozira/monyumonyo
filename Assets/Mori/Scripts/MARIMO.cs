@@ -5,7 +5,7 @@ using UnityEngine;
 public class MARIMO : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float _speed = 5f;
 
     void Update()
     {
@@ -13,21 +13,20 @@ public class MARIMO : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            position.x -= speed;
+            position.x -= _speed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            position.x += speed;
+            position.x += _speed;
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            position.y += speed;
+            position.y += _speed;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            position.y -= speed;
+            position.y -= _speed;
         }
-
         transform.position = position;
     }
 }
