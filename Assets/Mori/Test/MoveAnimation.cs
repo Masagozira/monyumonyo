@@ -17,13 +17,14 @@ public class MoveAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (_humanContlloler.DragFlg ==true && Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    animator.SetBool("Triangle", true); // アニメーション切り替え
-        //}
-        //else
-        //{
-        //    animator.SetBool("Triangle", false);
-        //}
+        if (this.gameObject==true)
+        {
+            animator.SetBool("Triangle", true); // アニメーション切り替え
+        }
+        else
+        {
+            animator.SetBool("Triangle", false);
+        }
+        //_humanContlloler.DragFlg == true && Input.GetKey(KeyCode.Mouse0)
     }
 }
