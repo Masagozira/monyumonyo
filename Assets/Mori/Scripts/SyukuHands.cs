@@ -66,7 +66,7 @@ public class SyukuHands : MonoBehaviour
             HandsMove();
             HandStretch();
         }
-        //’Í‚Ü‚ê‚½‚Æ‚«
+        //’Í‚Ü‚ê‚½Žž
         else if (_chaching==true)
         {
             HandShrink();
@@ -78,6 +78,7 @@ public class SyukuHands : MonoBehaviour
         //‚Ü‚¸‚¢“õ‚¢‚É‚È‚Á‚½Žž
         if (_marimo.gameObject.tag == "Odor")
         {
+            HandShrink();
             _targetRig.bodyType = RigidbodyType2D.Dynamic;
             _chaching = false;
             _marimoScr.enabled = true;

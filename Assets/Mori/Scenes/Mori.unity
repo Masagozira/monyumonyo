@@ -620,6 +620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: En_SyukuBody
       objectReference: {fileID: 0}
+    - target: {fileID: 4930219110662679934, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4930219110863380813, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
       propertyPath: _marimo
       value: 
