@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// シュクシュクのうでの動きのスクリプト
+/// </summary>
 public class SyukuHands : MonoBehaviour
 {
     //自身のTransform
@@ -11,94 +11,100 @@ public class SyukuHands : MonoBehaviour
     [SerializeField]
     private BoxCollider2D _armsCol;
     //ターゲットのTransform
-    [SerializeField]
+    [SerializeField, Header("プレイヤーのTransform取得")]
     private Transform _targetTra;
     //ターゲットのRigidbody2D
-    [SerializeField]
+    [SerializeField, Header("プレイヤーのRigidBody取得")]
     private Rigidbody2D _targetRig;
     //プレイヤータグ取得用&引っ張り用
-    [SerializeField]
+    [SerializeField, Header("プレイヤー")]
     private GameObject _marimo;
+    //プレイヤー操作のスクリプト
+    [SerializeField, Header("プレイヤーの操作スクリプト取得")]
+    private MARIMO _marimoScr;
+    //腕が動く条件にあるか
+    [Header("索敵範囲内にプレイヤーがいるか、居る：true")]
+    public bool _isHandsMove = false;
+    //腕を伸ばす(スプライトを伸ばす)ためのSpriteRenderer取得
+    private SpriteRenderer _syuSpr;
+    //腕をどれくらいのばすか
+    [SerializeField, Header("腕の長さ限界値、どのくらい伸びるか")]
+    private float _syuHandHeightRim = 10f;
+    //腕ののびる速度
+    [SerializeField,Header("腕がプレイヤーに向かって伸びる速さ")]
+    private float _handTime = 30;
+    //腕ののびる速度：代入用
+    private float _handLong = 3.96f;
+    //腕ののびる速度：Collider代入用
+    private float _handColSize = 3.2f;
     //手を向かせたい方向
     private Vector3 dir;
-    //腕が動く条件にあるか
-    public bool _isHandsMove = false;
-    //腕を伸ばすためのSpriteRenderer取得
-    private SpriteRenderer _syuSpr;
-    [SerializeField, Header("腕の長さ限界値")]
-    private float _syuHandHeightRim = 10f;
-    [SerializeField,Header("腕がプレイヤーに向かって伸びる速度")]
-    private float _handTime = 30;
-    private float _handLong;
-    private float _handColSize;
     //プレイヤーを今掴んでいるか
     private bool _chaching = false;
-    [SerializeField,Header("引き寄せスピード")]
+    //引き寄せられるプレイヤーの速さ
+    [SerializeField,Header("引き寄せる速さ")]
     private float _attractionSpeed = 1f;
-    //プレイヤー操作のスクリプト
-    [SerializeField]
-    private MARIMO _marimoScr;
-    private bool _chachCoolTime = false;
 
+    /// <summary>
+    /// 初期設定
+    /// ・うでのSpriteRendererとBoxCollider2Dの取得
+    /// </summary>
     private void Start()
     {
         _syuSpr = this.GetComponent<SpriteRenderer>();
         _armsCol = this.GetComponent<BoxCollider2D>();
-        _syuSpr.drawMode = SpriteDrawMode.Tiled;
-        _handLong += 3.96f;
-        _handColSize += 3.2f;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 匂いで判定してうでが動く
+    /// </summary>
     void Update()
     {
+        //いい匂いで、索敵範囲内で、掴まれていない時
         if (_marimo.gameObject.tag == "Florus" && _isHandsMove == true && _chaching == false)
         {
             HandsMove();
             HandStretch();
         }
-        //else if (_chaching == true && _handLong > 4
-        //|| _marimo.gameObject.tag == "Odor"
-        //|| _marimo.gameObject.tag == "Player")
-        //{
-        //    HandShrink();
-        //}
+        //掴まれたとき
         else if (_chaching==true)
         {
             HandShrink();
         }
 
+        //bool確認
         Debug.Log("Playerが索敵範囲内にいる：" + _isHandsMove + "," + "掴んでいる：" + _chaching);
 
+        //まずい匂いになった時
         if (_marimo.gameObject.tag == "Odor")
         {
-            //プレイヤー子オブジェクト解除、ツタから離す
-            _marimo.gameObject.transform.parent = null;
-            Debug.Log("触れない");
             _targetRig.bodyType = RigidbodyType2D.Dynamic;
             _chaching = false;
             _marimoScr.enabled = true;
         }
     }
+
+    /// <summary>
+    /// プレイヤーとうでが当たった時、プレイヤーを動けなくする（匂い切り替え除く）
+    /// ・プレイヤーの操作スクリプトを無効にする
+    /// ・プレイヤーの重力を無くす
+    /// ・掴んでいるか判定するboolをtrueにする
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Florus" || collision.gameObject.tag == "Player")
         {
-            //プレイヤーを子オブジェクトにする、ツタにくっつける
-            collision.gameObject.transform.parent = this.gameObject.transform;
             Debug.Log("キャッチ");
             _chaching = true;
             _targetRig.bodyType = RigidbodyType2D.Kinematic;
             _marimoScr.enabled = false;
         }
-
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        _targetRig.gravityScale = 1;
-        _chaching = false;
     }
 
+    /// <summary>
+    /// プレイヤーに向かってうでを伸ばす
+    /// </summary>
     private void HandsMove()
     {
         //向きたい方向を計算
@@ -110,6 +116,10 @@ public class SyukuHands : MonoBehaviour
         //Quaternion quaternion = Quaternion.LookRotation(vector3);
         //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, _targetTra.transform.rotation, _speed);
     }
+
+    /// <summary>
+    /// うで伸びる
+    /// </summary>
     private void HandStretch()
     {
         if (_handLong>-_syuHandHeightRim)
@@ -122,6 +132,10 @@ public class SyukuHands : MonoBehaviour
             _armsCol.size = new Vector2(3.8f, _handColSize);
         }
     }
+
+    /// <summary>
+    /// うで縮む
+    /// </summary>
     private void HandShrink()
     {
         if(_handLong >= 3.96f)
@@ -136,14 +150,5 @@ public class SyukuHands : MonoBehaviour
         _marimo.transform.position 
             = Vector3.MoveTowards(_marimo.transform.position, this.transform.position, _attractionSpeed/100);
     }
-    private void SwitchChanging()
-    {
-        _chaching = false;
-        Debug.Log("Yobareta:Changing");
-    }
-    //private void ChachCoolTime()
-    //{
-    //    _chachCoolTime = false;
-    //    Debug.Log("Yobareta:CoolTime");
-    //}
+
 }
