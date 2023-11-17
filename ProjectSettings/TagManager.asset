@@ -7,6 +7,8 @@ TagManager:
   - AMAI
   - NORMAL
   - MAZUI
+  - Florus
+  - Odor
   layers:
   - Default
   - TransparentFX
