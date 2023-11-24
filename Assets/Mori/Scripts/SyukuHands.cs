@@ -139,7 +139,7 @@ public class SyukuHands : MonoBehaviour
     /// </summary>
     private void HandShrink()
     {
-        if(_handLong >= 3.96f)
+        if(_handLong >= 3.96f||(_handLong >= 3.96f&&_marimo.gameObject.tag == "Odor"))
         {
             _handLong -= _handTime / 100;
             _handColSize -= _handTime / 100;

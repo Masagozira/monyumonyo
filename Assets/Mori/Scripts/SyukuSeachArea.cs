@@ -7,6 +7,9 @@ public class SyukuSeachArea : MonoBehaviour
     //うでスクリプト取得
     [SerializeField]
     private SyukuHands _syukuHands;
+    //プレイヤーのコライダー取得、識別用
+    [SerializeField]
+    private CircleCollider2D _marimo;
 
     /// <summary>
     /// 索敵範囲内に入った時
@@ -14,7 +17,11 @@ public class SyukuSeachArea : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _syukuHands._isHandsMove = true;
+        if(collision ==_marimo)
+        {
+            _syukuHands._isHandsMove = true;
+        }
+
     }
     /// <summary>
     /// 索敵範囲内から出た時
