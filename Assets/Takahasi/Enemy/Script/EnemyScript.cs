@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     public float Smelltime = 5f;                // 匂い時間（秒）
 
+    public float RotationY = 180f;              //画像を左右反転させる数
 
     private float Smelltimer = 0.0f;                                        // 経過時間を格納するタイマー変数(初期値0秒)
     private bool Smellsdelicious = false;                                   // 美味しそうな匂い状態かどうかのフラグ
@@ -72,17 +73,13 @@ public class EnemyScript : MonoBehaviour
         if (Smellsdisgusting)
         {
             Debug.Log("不味そうな香り");
-
             //不味そうな香りを出して貫通アクション
             //すり抜けさせる,PlatformEffector2Dをtrue（on）にする
             _enemy = Enemy.GetComponent<PlatformEffector2D>();
             _enemy.enabled = true;
 
-            //基本歩行
-
             //毎フレームタイマー変数にTime.deltaTimeを足す
             Smelltimer += Time.deltaTime;
-
             //タイマーが無敵時間(5秒)を超えたとき
             if (Smelltimer >= Smelltime)
             {
@@ -92,6 +89,7 @@ public class EnemyScript : MonoBehaviour
                 //タイマーを0.0秒にリセットする
                 Smelltimer = 0.0f;
             }
+
         }
 
         //通常状態
@@ -99,24 +97,43 @@ public class EnemyScript : MonoBehaviour
         {
             //基本歩行
             pos = transform.position;
+            // transformを取得
+            Transform myTransform = this.transform;
 
             //敵の左右移動
             transform.Translate(transform.right * Time.deltaTime * speed * _enemypos);
             if (pos.x > 1.5)
             {
                 _enemypos = -1;
-                // transformを取得
-                Transform myTransform = this.transform;
+
+                //画像回転
+                myTransform.Rotate(0f, RotationY, 0f); 
             }
             if (pos.x < -1.5)
             {
                 _enemypos = 1;
-                // transformを取得
-                Transform myTransform = this.transform;
+
+                //画像回転
+                myTransform.Rotate(0f, -RotationY, 0f);
             }
         }
 
     }
+
+    //バグ防止の画像の固定化
+    public void Rotation()
+    {
+        if (RotationY <= 180)
+        {
+            RotationY = 180;
+        }
+
+        if (RotationY <= 0)
+        {
+            RotationY = 0;
+        }
+    }
+
 
     //プレイヤー操作キー入力
     public void EnemyOnClickKey()
@@ -141,6 +158,7 @@ public class EnemyScript : MonoBehaviour
             //ボタンを押されたらフラグをfalseにする
             //不味そうな匂いと美味しそうな匂いを重ねて使えない様にするため
             Smellsdelicious = false;
+
         }
 
         else //上下以外のボタンを押してないとき
@@ -230,5 +248,6 @@ public class EnemyScript : MonoBehaviour
         //    //transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, ChaseSpeed * Time.deltaTime);
         //}
     }
+
 }
  
