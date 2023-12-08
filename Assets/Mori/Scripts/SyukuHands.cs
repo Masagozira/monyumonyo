@@ -34,9 +34,9 @@ public class SyukuHands : MonoBehaviour
     [SerializeField,Header("˜r‚ªƒvƒŒƒCƒ„[‚ÉŒü‚©‚Á‚ÄL‚Ñ‚é‘¬‚³")]
     private float _handTime = 30;
     //˜r‚Ì‚Ì‚Ñ‚é‘¬“xF‘ã“ü—p
-    private float _handLong = 3.96f;
+    private float _handLong = 0.5f;
     //˜r‚Ì‚Ì‚Ñ‚é‘¬“xFCollider‘ã“ü—p
-    private float _handColSize = 3.2f;
+    private float _handColSize = 0.4f;
     //è‚ğŒü‚©‚¹‚½‚¢•ûŒü
     private Vector3 dir;
     //ƒvƒŒƒCƒ„[‚ğ¡’Í‚ñ‚Å‚¢‚é‚©
@@ -113,6 +113,7 @@ public class SyukuHands : MonoBehaviour
         //Œü‚«‚½‚¢•ûŒü‚É‰ñ“]
         _armsTra.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
 
+        //FromToRotation
         //Vector3 vector3 = _targetTra.position - this.transform.position;
         //Quaternion quaternion = Quaternion.LookRotation(vector3);
         //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, _targetTra.transform.rotation, _speed);
@@ -128,9 +129,9 @@ public class SyukuHands : MonoBehaviour
             _handLong += _handTime / 100;
             _handColSize += _handTime / 100;
             //˜r‚ğL‚Î‚·
-            _syuSpr.size = new Vector2(3.8f, -_handLong);
+            _syuSpr.size = new Vector2(1f, -_handLong);
             _armsCol.offset = new Vector2(0, -_handColSize / 2);
-            _armsCol.size = new Vector2(3.8f, _handColSize);
+            _armsCol.size = new Vector2(0.5f, _handColSize);
         }
     }
 
@@ -139,14 +140,14 @@ public class SyukuHands : MonoBehaviour
     /// </summary>
     private void HandShrink()
     {
-        if(_handLong >= 3.96f||(_handLong >= 3.96f&&_marimo.gameObject.tag == "Odor"))
+        if(_handLong >= 0.01f||(_handLong >= 0.01f&&_marimo.gameObject.tag == "Odor"))
         {
             _handLong -= _handTime / 100;
             _handColSize -= _handTime / 100;
             //˜r‚ğk‚ß‚é
-            _syuSpr.size = new Vector2(3.8f, -_handLong);
+            _syuSpr.size = new Vector2(1f, -_handLong);
             _armsCol.offset = new Vector2(0, -_handColSize / 2);
-            _armsCol.size = new Vector2(3.8f, _handColSize);
+            _armsCol.size = new Vector2(0.5f, _handColSize);
         }
         _marimo.transform.position 
             = Vector3.MoveTowards(_marimo.transform.position, this.transform.position, _attractionSpeed/100);
