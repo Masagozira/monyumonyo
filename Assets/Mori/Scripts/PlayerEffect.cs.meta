@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 188f09600fb46c74493511448d8bd68f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _florusEffect: {fileID: 5258346373041943007, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
+  - _odorEffect: {fileID: 7577575350699562906, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
+  - _failEffect: {fileID: 720972655383054247, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
