@@ -36,10 +36,20 @@ public class Maru : MonoBehaviour
     private int _direction = 1;
     private Vector3 _scare;
 
+    private bool _playerDeath;
+    private CircleCollider2D _playerCol;
+
+    [SerializeField, Header("プレイヤーが死ぬときのSE")]
+    private AudioClip _deathSe;
+    AudioSource audioSource;
+
     private void Start()
     {
         //初期設定：向き
         _scare = this.transform.localScale;
+        _playerCol = _player.GetComponent<CircleCollider2D>();
+        _playerDeath = false;
+        audioSource = GetComponent<AudioSource>();
     }
     
     /// <summary>
@@ -62,6 +72,7 @@ public class Maru : MonoBehaviour
         }
 
         Debug.Log("プレイヤーが近くにいる : " + _playerHere +" " + "プレイヤーが前にいる : " + _playerFrontHere);
+        Debug.Log(_playerDeath);
     }
 
     /// <summary>
@@ -129,13 +140,34 @@ public class Maru : MonoBehaviour
             , 0);
     }
 
+    ///// <summary>
+    ///// デバッグ用
+    ///// </summary>
+    ///// <param name="collision"></param>
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.tag == "Player") Debug.LogWarning("Debug : Hit,OK");
+    //    if (collision.collider.tag == "Odor") Debug.LogError("Debug : Hit,ERROR");
+    //}
+
     /// <summary>
-    /// デバッグ用
+    /// プレイヤーが当たった時
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player") Debug.LogWarning("Debug : Hit,OK");
-        if (collision.collider.tag == "Odor") Debug.LogError("Debug : Hit,ERROR");
+        if (_playerDeath == false && collision.collider == _playerCol)
+        {
+            Debug.LogWarning("HitBody");
+            _playerDeath = true;
+            audioSource.PlayOneShot(_deathSe);
+            Invoke("ReDeath", 10f);
+        }
+    }
+
+    private void ReDeath()
+    {
+        _playerDeath = false;
+        Debug.Log("ReDeath");
     }
 }
