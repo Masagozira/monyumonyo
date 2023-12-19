@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 754dfa9e97b023e4caac71504354f8e5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ChangeObject: {instanceID: 0}
+  - initialSprite: {fileID: 21300000, guid: 45206bdec632010438ea84cce13820b6, type: 3}
+  - newSprite: {fileID: 21300000, guid: d624f7155426e9d48bb88f7c9ad0dbf6, type: 3}
+  - Audio: {instanceID: 0}
+  - JumpSE: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

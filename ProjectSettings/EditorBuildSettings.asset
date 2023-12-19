@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Hurusawa/Scenes/Clear.unity
+    guid: db1da5c4793f25b44ba4f8fb8fdff7b9
+  - enabled: 1
+    path: Assets/Hurusawa/Scenes/Gameover.unity
+    guid: b87fe96b1518ebb44b855abf22fc7ddb
+  - enabled: 1
+    path: Assets/Hurusawa/Scenes/Select.unity
+    guid: 497ac1fb9a9b71e40adc2ab129ff6c23
+  - enabled: 1
+    path: Assets/Hurusawa/Scenes/Stage1.unity
+    guid: 764a301ae00aa9740b6dad515b7ab5f8
+  - enabled: 1
+    path: Assets/Hurusawa/Scenes/Start.unity
+    guid: 09f9241a49e146f44bed908ef8c12139
   m_configObjects: {}

@@ -9,6 +9,9 @@ TagManager:
   - MAZUI
   - Florus
   - Odor
+  - ground
+  - mushroom
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - UI
   - Odor
   - Enemy
-  - 
-  - 
+  - ground
+  - mushroom
   - 
   - 
   - 
