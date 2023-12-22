@@ -1,173 +1,188 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-//‚Ü‚¸‚¢“õ‚¢‚ÌƒvƒŒƒCƒ„[‚ğƒXƒ‹[‚·‚éˆ—
-//ƒŒƒCƒ„[‚Å”»’èAOdor‚Í‚·‚è”²‚¯‚é
-//gameObject.layer = LayerMask.NameToLayer("Odor");
-
-/// <summary>
-/// ƒ}ƒ‹ƒ‚ƒ‹‚Ì•àsA’ÇÕ‚ÌƒXƒNƒŠƒvƒg
-/// </summary>
 public class Maru : MonoBehaviour
 {
-    //’Ç‚¢‚©‚¯‚½‚¢gameobject
-    [SerializeField,Header("ƒvƒŒƒCƒ„[")]
+    // è¿½ã„ã‹ã‘ãŸã„gameobject
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼")]
     private GameObject _player;
-    //’Êí•àsƒXƒs[ƒh
-    [SerializeField,Header("’Êí‚Ì•àsƒXƒs[ƒh")]
+
+    // é€šå¸¸æ­©è¡Œã‚¹ãƒ”ãƒ¼ãƒ‰
+    [SerializeField, Header("é€šå¸¸æ™‚ã®æ­©è¡Œã‚¹ãƒ”ãƒ¼ãƒ‰")]
     private float _maruspeed = 2;
-    //’Êí•às”ÍˆÍ
-    [SerializeField, Header("’Êí‚Ì•às”ÍˆÍ")]
+
+    // é€šå¸¸æ­©è¡Œç¯„å›²
+    [SerializeField, Header("é€šå¸¸æ™‚ã®æ­©è¡Œç¯„å›²")]
     private float _maruArea = 5;
-    //•às—pA‘‰Á‚³‚¹‚Ä_maruArea‚Ì’l‚É‚È‚Á‚½‚çˆø‚«•Ô‚·
+
+    // æ­©è¡Œç”¨ã€å¢—åŠ ã•ã›ã¦_maruAreaã®å€¤ã«ãªã£ãŸã‚‰å¼•ãè¿”ã™
     private float _maruAreaAdd = 0;
-    //’Ç‚¢‚©‚¯‚éƒXƒs[ƒh
-    [SerializeField,Header("ƒvƒŒƒCƒ„[”­Œ©‚Ì•àsƒXƒs[ƒh")]
+
+    // è¿½ã„ã‹ã‘ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç™ºè¦‹æ™‚ã®æ­©è¡Œã‚¹ãƒ”ãƒ¼ãƒ‰")]
     private float _angrySpeed = 5f;
-    //ƒvƒŒƒCƒ„[‚ªõ“G”ÍˆÍ“à‚É‚¢‚é‚©F‘S‘Ì
-    [Header("õ“G”ÍˆÍ“à‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©A‹‚éFtrue")]
+
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç´¢æ•µç¯„å›²å†…ã«ã„ã‚‹ã‹ï¼šå…¨ä½“
+    [Header("ç´¢æ•µç¯„å›²å†…ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã€å±…ã‚‹ï¼štrue")]
     public bool _playerHere = false;
-    //ƒvƒŒƒCƒ„[‚ªõ“G”ÍˆÍ“à‚É‚¢‚é‚©F‘O•û
-    [Header("‘O•ûõ“G”ÍˆÍ“à‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©A‹‚éFtrue")]
+
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç´¢æ•µç¯„å›²å†…ã«ã„ã‚‹ã‹ï¼šå‰æ–¹
+    [Header("å‰æ–¹ç´¢æ•µç¯„å›²å†…ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã€å±…ã‚‹ï¼štrue")]
     public bool _playerFrontHere = false;
 
-    //Œü‚«‚Ì•ÏX
+    // å‘ãã®å¤‰æ›´
     private int _direction = 1;
     private Vector3 _scare;
 
     private bool _playerDeath;
     private CircleCollider2D _playerCol;
 
-    [SerializeField, Header("ƒvƒŒƒCƒ„[‚ª€‚Ê‚Æ‚«‚ÌSE")]
-    private AudioClip _deathSe;
-    AudioSource audioSource;
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒæ­»ã¬ã¨ãã®SE")]
+    public AudioSource audioSource;
+    public AudioClip _deathSe;
+
+    [SerializeField, Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆç”¨ã®ãƒ‘ãƒãƒ«")]
+    private UnityEngine.UI.Image fadePanel;
 
     private void Start()
     {
-        //‰Šúİ’èFŒü‚«
+        // åˆæœŸè¨­å®šï¼šå‘ã
         _scare = this.transform.localScale;
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
-        audioSource = GetComponent<AudioSource>();
     }
-    
-    /// <summary>
-    /// “õ‚¢‚âõ“G”ÍˆÍ‚Å”»’è‚µ’ÇÕ‚Ü‚½‚ÍˆÚ“®‚·‚é
-    /// </summary>
+
     private void Update()
     {
-        //ƒvƒŒƒCƒ„[‚ªõ“G”ÍˆÍ“à‚É‘¶İ‚µ‚Ä‚½‚ç’Ç‚¢‚©‚¯‚é
-        //E”ü–¡‚µ‚»‚¤‚È“õ‚¢‚©‚Âõ“G”ÍˆÍ“à
-        //E’Êí‚©‚Â‘O•ûõ“G”ÍˆÍ“à
-        if (_player.tag == "Florus" && (_playerHere == true || _playerFrontHere == true)
-            || _player.tag == "Player" && _playerFrontHere == true)
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç´¢æ•µç¯„å›²å†…ã«å­˜åœ¨ã—ã¦ãŸã‚‰è¿½ã„ã‹ã‘ã‚‹
+        // ãƒ»ç¾å‘³ã—ãã†ãªåŒ‚ã„ã‹ã¤ç´¢æ•µç¯„å›²å†…
+        // ãƒ»é€šå¸¸æ™‚ã‹ã¤å‰æ–¹ç´¢æ•µç¯„å›²å†…
+        if ((_player.tag == "Florus" && (_playerHere == true || _playerFrontHere == true))
+            || (_player.tag == "Player" && _playerFrontHere == true))
         {
             ChaseCase();
         }
-        //’ÊíA‚Ü‚¸‚»‚¤‚È“õ‚¢A‚»‚êˆÈŠO
+        // é€šå¸¸æ™‚ã€ã¾ãšãã†ãªåŒ‚ã„ã€ãã‚Œä»¥å¤–
         else
         {
             NonCase();
         }
 
-        Debug.Log("ƒvƒŒƒCƒ„[‚ª‹ß‚­‚É‚¢‚é : " + _playerHere +" " + "ƒvƒŒƒCƒ„[‚ª‘O‚É‚¢‚é : " + _playerFrontHere);
+        Debug.Log("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒè¿‘ãã«ã„ã‚‹ : " + _playerHere + " " + "ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå‰ã«ã„ã‚‹ : " + _playerFrontHere);
         Debug.Log(_playerDeath);
     }
 
-    /// <summary>
-    /// ’Ç”ö•àsAƒvƒŒƒCƒ„[‚ğ’Ç‚¢‚©‚¯‚é
-    /// </summary>
     private void ChaseCase()
     {
         Debug.Log("Case1:Chase");
 
-        //ƒvƒŒƒCƒ„[‚ÉŒü‚©‚Á‚ÄˆÚ“®
-        transform.position
-            = Vector2.MoveTowards(this.transform.position
-            , _player.transform.position
-            , _angrySpeed * Time.deltaTime);
-        //‚à‚µƒvƒŒƒCƒ„[.x‚ª©•ª‚æ‚è+‚¾‚Á‚½‚ç
-        if(this.transform.position.x < _player.transform.position.x)
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«å‘ã‹ã£ã¦ç§»å‹•
+        transform.position = Vector2.MoveTowards(
+            this.transform.position,
+            _player.transform.position,
+            _angrySpeed * Time.deltaTime);
+
+        // ã‚‚ã—ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼.xãŒè‡ªåˆ†ã‚ˆã‚Š+ã ã£ãŸã‚‰
+        if (this.transform.position.x < _player.transform.position.x)
         {
-            //‰EŒü‚«
+            // å³å‘ã
             _scare.x = -1;
             this.transform.localScale = _scare;
         }
-        //‚à‚µƒvƒŒƒCƒ„[.x‚ª©•ª‚æ‚è-‚¾‚Á‚½‚ç
+        // ã‚‚ã—ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼.xãŒè‡ªåˆ†ã‚ˆã‚Š-ã ã£ãŸã‚‰
         else
         {
-            //¶Œü‚«
+            // å·¦å‘ã
             _scare.x = 1;
             this.transform.localScale = _scare;
         }
     }
 
-    /// <summary>
-    /// ’Êí•às
-    /// </summary>
     private void NonCase()
     {
         Debug.Log("Case2:NotFind");
-        //ƒŒƒCƒ„[‚Å”»’èAOdor‚Í‚·‚è”²‚¯‚é
-        //gameObject.layer = LayerMask.NameToLayer("Odor");
 
-        //Šî–{•às
-        //•Ï”‚É’l‚ğ“ü‚ê‘±‚¯‚é
+        // åŸºæœ¬æ­©è¡Œ
         _maruAreaAdd += Time.deltaTime * 1.4f;
-        //•Ï”‚ªˆê’è’l‚É’B‚µ‚½‚çƒŠƒZƒbƒgAŒü‚«”½“]
-        if(_maruAreaAdd >= _maruArea)
+
+        // å¤‰æ•°ãŒä¸€å®šå€¤ã«é”ã—ãŸã‚‰ãƒªã‚»ãƒƒãƒˆã€å‘ãåè»¢
+        if (_maruAreaAdd >= _maruArea)
         {
             _maruAreaAdd = 0;
             _direction *= -1;
-            //•àsŒü‚«‚ª+‚È‚ç‰EŒü‚«
-            if(_direction == 1)
+
+            // æ­©è¡Œå‘ããŒ+ãªã‚‰å³å‘ã
+            if (_direction == 1)
             {
                 _scare.x = -1;
                 this.transform.localScale = _scare;
             }
-            //•àsŒü‚«‚ª-‚È‚ç¶Œü‚«
+            // æ­©è¡Œå‘ããŒ-ãªã‚‰å·¦å‘ã
             else
             {
                 _scare.x = 1;
                 this.transform.localScale = _scare;
             }
         }
-        //•à‚«‘±‚¯‚é
-        transform.position 
-            = new Vector3(transform.position.x + _maruspeed * Time.fixedDeltaTime * _direction
-            , this.transform.position.y
-            , 0);
+
+        // æ­©ãç¶šã‘ã‚‹
+        transform.position = new Vector3(
+            transform.position.x + _maruspeed * Time.fixedDeltaTime * _direction,
+            this.transform.position.y,
+            0);
     }
 
-    ///// <summary>
-    ///// ƒfƒoƒbƒO—p
-    ///// </summary>
-    ///// <param name="collision"></param>
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.tag == "Player") Debug.LogWarning("Debug : Hit,OK");
-    //    if (collision.collider.tag == "Odor") Debug.LogError("Debug : Hit,ERROR");
-    //}
-
-    /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ª“–‚½‚Á‚½
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_playerDeath == false && collision.collider == _playerCol)
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒæ­»äº¡ã—ãŸæ™‚
+        //å¤‰æ›´ã€€collider == _playerCol ã‹ã‚‰ collision.gameObject.CompareTag("Player")ã¨collision.gameObject.CompareTag("Florus")
+        if (_playerDeath == false && collision.gameObject.CompareTag("Player"))
         {
             Debug.LogWarning("HitBody");
             _playerDeath = true;
-            audioSource.PlayOneShot(_deathSe);
-            Invoke("ReDeath", 10f);
+            StartCoroutine(FadeOutAndPlaySE());
+        }
+
+        if (_playerDeath == false && collision.gameObject.CompareTag("Florus"))
+        {
+            Debug.LogWarning("HitBody");
+            _playerDeath = true;
+            StartCoroutine(FadeOutAndPlaySE());
         }
     }
 
-    private void ReDeath()
+    private IEnumerator FadeOutAndPlaySE()
     {
-        _playerDeath = false;
-        Debug.Log("ReDeath");
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã®é–‹å§‹
+        StartCoroutine(FadeOut());
+
+        // SEã‚’å†ç”Ÿ
+        audioSource.PlayOneShot(_deathSe);
+
+        // SEã®å†ç”ŸãŒçµ‚ã‚ã‚‹ã¾ã§å¾…æ©Ÿ
+        yield return new WaitForSeconds(_deathSe.length);
+
+        // ã‚·ãƒ¼ãƒ³é·ç§»
+        SceneManager.LoadScene("Gameover");
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        float fadeTime = 1.5f;
+
+        Color originalColor = fadePanel.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        while (elapsedTime < fadeTime)
+        {
+            fadePanel.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        fadePanel.color = targetColor;
     }
 }

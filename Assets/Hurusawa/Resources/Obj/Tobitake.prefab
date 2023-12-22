@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3109165660728074146}
   - component: {fileID: 3109165660728074149}
   - component: {fileID: 3109165660728074145}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_1
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3109165660940419256}
   - component: {fileID: 3109165660940419259}
   - component: {fileID: 3109165660940419258}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_3
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 3109165661294845049}
   - component: {fileID: 3109165661294845048}
   - component: {fileID: 3109165661294845051}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_2
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3109165661398241636}
   - component: {fileID: 3109165661398241639}
   - component: {fileID: 3109165661398241638}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_4
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 3109165661702675312}
   - component: {fileID: 3109165661702675315}
   - component: {fileID: 3109165661702675314}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_7
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 3109165661752695196}
   - component: {fileID: 3109165661752695199}
   - component: {fileID: 3109165661752695198}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_8
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 3109165661918803410}
   - component: {fileID: 3109165661918803413}
   - component: {fileID: 3109165661918803412}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_6
   m_TagString: mushroom
   m_Icon: {fileID: 0}
@@ -952,9 +952,9 @@ GameObject:
   - component: {fileID: 3109165661959279525}
   - component: {fileID: 3109165661959279524}
   - component: {fileID: 3109165661959279527}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tobitake
-  m_TagString: Untagged
+  m_TagString: mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 3109165662164188940}
   - component: {fileID: 3109165662164188943}
   - component: {fileID: 3109165662164188942}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: bone_5
   m_TagString: mushroom
   m_Icon: {fileID: 0}

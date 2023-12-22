@@ -13,6 +13,8 @@ public class buttonImage :MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     // 初期化時に呼ばれるメソッド
     void Start()
     {
+        Cursor.visible = true;
+        
         // Imageコンポーネントを取得
         image = GetComponent<Image>();
 

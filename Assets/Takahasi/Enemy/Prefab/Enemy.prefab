@@ -99,6 +99,7 @@ MonoBehaviour:
   speed: 2
   ChaseSpeed: 5
   Smelltime: 5
+  RotationY: 180
 --- !u!50 &8959645049427205876
 Rigidbody2D:
   serializedVersion: 4
@@ -169,7 +170,7 @@ PlatformEffector2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8959645049427205878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2

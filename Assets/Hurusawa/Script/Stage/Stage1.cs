@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Stage1 : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision2D)
+    [SerializeField, Header("フェードアウト用のパネル")]
+    private UnityEngine.UI.Image fadePanel;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision2D.gameObject.CompareTag("Odor"))
+        if (other.CompareTag("Player") || other.CompareTag("Odor") || other.CompareTag("Florus"))
         {
-            SceneManager.LoadScene("Stage1");
+            StartCoroutine(FadeOut());
         }
-        if (collision2D.gameObject.CompareTag("mushroom"))
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        float fadeTime = 1.3f;
+
+        Color originalColor = fadePanel.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        while (elapsedTime < fadeTime)
         {
-            SceneManager.LoadScene("Stage1");
+            fadePanel.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-         if (collision2D.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("Stage1");
-        }
+
+        fadePanel.color = targetColor;
+        SceneManager.LoadScene("Stage1");
     }
 }

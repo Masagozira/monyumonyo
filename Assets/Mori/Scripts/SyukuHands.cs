@@ -21,7 +21,7 @@ public class SyukuHands : MonoBehaviour
     private GameObject _marimo;
     //プレイヤー操作のスクリプト
     [SerializeField, Header("プレイヤーの操作スクリプト取得")]
-    private MARIMO _marimoScr;
+    private PlayerMovement _marimoScr;
     //腕が動く条件にあるか
     [Header("索敵範囲内にプレイヤーがいるか、居る：true")]
     public bool _isHandsMove = false;
@@ -154,3 +154,8 @@ public class SyukuHands : MonoBehaviour
     }
 
 }
+
+/*
+変更点
+ private MARIMO _marimoScr;　から　private PlayerMovement _marimoScr;に変更
+*/

@@ -13,6 +13,11 @@ public class ChangeTags : MonoBehaviour
     public float ChangeTime1 = 5.0f;  // タグ1に切り替えるまでの時間
     public float ChangeTime2 = 4.0f;  // タグ2に切り替えるまでの時間
     public float ChangeTime = 0.0f;  // 現在の切り替え中の経過時間
+    private float CooldownTime = 3.0f;  // 追加: クールダウン時間
+    private bool isInCooldown = false;  // 追加: クールダウン中かどうかのフラグ
+
+    public PlayerEffect _playerEffect;
+
 
     //切り替え時のSE
     public AudioSource Audio;
@@ -21,6 +26,8 @@ public class ChangeTags : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+
         // ゲーム開始時に"Player"タグを持つオブジェクトを検索し、ログに表示
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject obj in objs)
@@ -32,20 +39,29 @@ public class ChangeTags : MonoBehaviour
         GetLayersRecursive(parentTransform);
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        if (isInCooldown)
+        {
+            // クールダウン中は何もしない
+            return;
+        }
+
         // タグが切り替え中の場合
         if (istag1 || istag2)
         {
             ChangeTime += Time.deltaTime;
 
+
             // 切り替え中の時間が指定時間を超えた場合
             if (ChangeTime >= (istag1 ? ChangeTime1 : ChangeTime2))
             {
                 EndChangeTag();  // タグの切り替えを終了する
+                StartCooldown();  // 切り替え後にクールダウンを開始
             }
 
             return;
+
         }
 
         // "Florus"タグに切り替える条件
@@ -67,6 +83,7 @@ public class ChangeTags : MonoBehaviour
             ChangeTime = 0.0f;
             Debug.Log("Odorに変更しました");
         }
+
     }
 
     // "Florus"タグに切り替えるメソッド
@@ -125,5 +142,19 @@ public class ChangeTags : MonoBehaviour
             // 再帰的に子オブジェクトのレイヤーを取得
             GetLayersRecursive(child);
         }
+    }
+
+    // 追加: クールダウンを開始するメソッド
+    void StartCooldown()
+    {
+        StartCoroutine(CooldownCoroutine());
+    }
+
+    // 追加: クールダウンのコルーチン
+    IEnumerator CooldownCoroutine()
+    {
+        isInCooldown = true;
+        yield return new WaitForSeconds(CooldownTime);
+        isInCooldown = false;
     }
 }

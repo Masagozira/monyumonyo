@@ -372,7 +372,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -549,7 +549,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -799,7 +799,7 @@ SpriteShapeRenderer:
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: cbf55c595f29c1d49b55713bd89746f1, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
+  - {fileID: 21300000, guid: 554a30a45860f494ca38586c54b7e5d9, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
@@ -958,7 +958,7 @@ RectTransform:
   m_Children:
   - {fileID: 6965154094151138228}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1042,7 +1042,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4930219110558255888, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4930219110558255888, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1088,6 +1088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyukuSyuku
       objectReference: {fileID: 0}
+    - target: {fileID: 4930219110558255889, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4930219110997735733, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.67
@@ -1114,7 +1118,7 @@ GameObject:
   - component: {fileID: 379111540}
   - component: {fileID: 379111539}
   - component: {fileID: 379111538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2264,7 +2268,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -2300,7 +2304,7 @@ SpriteShapeRenderer:
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: cbf55c595f29c1d49b55713bd89746f1, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
+  - {fileID: 21300000, guid: 554a30a45860f494ca38586c54b7e5d9, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
@@ -2781,7 +2785,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -3123,7 +3127,7 @@ SpriteShapeRenderer:
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: cbf55c595f29c1d49b55713bd89746f1, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
+  - {fileID: 21300000, guid: 554a30a45860f494ca38586c54b7e5d9, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
@@ -3571,7 +3575,7 @@ SpriteShapeRenderer:
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: cbf55c595f29c1d49b55713bd89746f1, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
+  - {fileID: 21300000, guid: 554a30a45860f494ca38586c54b7e5d9, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
@@ -3781,7 +3785,7 @@ SpriteShapeRenderer:
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: cbf55c595f29c1d49b55713bd89746f1, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
+  - {fileID: 21300000, guid: 554a30a45860f494ca38586c54b7e5d9, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
   - {fileID: 21300000, guid: cce5a106dd6981340a2c0ff66c886856, type: 3}
@@ -3800,8 +3804,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033929218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -46.442184, y: -3.7592726, z: 0.11016187}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -46.442184, y: -4.0426, z: 0.11016187}
+  m_LocalScale: {x: 1, y: 0.87623304, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 799944871}
@@ -3947,6 +3951,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   rayDistance: 1.3
+  ChangeObject: {fileID: 0}
+  initialSprite: {fileID: 0}
+  newSprite: {fileID: 0}
+  Audio: {fileID: 0}
+  JumpSE: {fileID: 0}
 --- !u!114 &6965154094151138233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3962,6 +3971,9 @@ MonoBehaviour:
   ChangeTime1: 5
   ChangeTime2: 4
   ChangeTime: 0
+  Audio: {fileID: 0}
+  FloruSE: {fileID: 0}
+  OdorSE: {fileID: 0}
 --- !u!114 &6965154094151138234
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float rayDistance = 1.3f;
     private bool isGrounded = true;
 
-    
+
     //スプライトを切り替えるオブジェクトの取得
     public GameObject ChangeObject;
     //元のスプライト
@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Cursor.visible = false;
     }
 
     void Update()
@@ -48,11 +47,11 @@ public class PlayerMovement : MonoBehaviour
         // デバッグログ+スプライトの変更
         if (hitGround.collider != null)
         {
-            if(!wasGrounded)
+            if (!wasGrounded)
             {
-                 ChangeSprite2();
+                ChangeSprite2();
             }
-            Debug.Log("Hit ground: " + hitGround.collider.gameObject.name);
+            //Debug.Log("Hit ground: " + hitGround.collider.gameObject.name);
         }
         if (hitMushroom.collider != null)
         {
@@ -60,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 ChangeSprite2();  // 元のスプライトに戻す
             }
-            Debug.Log("Hit mushroom: " + hitMushroom.collider.gameObject.name);
+            //Debug.Log("Hit mushroom: " + hitMushroom.collider.gameObject.name);
         }
 
         // 地面またはキノコに接地しているか判定
@@ -82,17 +81,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         wasGrounded = isGrounded;
-     
-
-        //マウスカーソルのON,OFF
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.visible = true;
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Cursor.visible = false;
-        }
     }
 
     // スプライトを切り替える

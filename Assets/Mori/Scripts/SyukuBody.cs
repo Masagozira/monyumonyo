@@ -9,7 +9,8 @@ public class SyukuBody : MonoBehaviour
     private CircleCollider2D _marimoCol;
     private bool _playerDeath;
     [SerializeField, Header("ÉvÉåÉCÉÑÅ[Ç™éÄÇ Ç∆Ç´ÇÃSE")]
-    private AudioClip _deathSe;
+    public AudioSource Audio;
+    public AudioClip _deathSe;
     AudioSource audioSource;
     private void Start()
     {
@@ -27,7 +28,7 @@ public class SyukuBody : MonoBehaviour
         if (_playerDeath == false && collision.collider == _marimoCol)
         {
             _playerDeath = true;
-            audioSource.PlayOneShot(_deathSe);
+            Audio.PlayOneShot(_deathSe);
             Invoke("ReDeath", 10f);
         }
     }

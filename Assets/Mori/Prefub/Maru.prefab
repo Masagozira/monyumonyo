@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460503012902104591}
-  - component: {fileID: 1460503012902104588}
   - component: {fileID: 1460503012902104589}
   - component: {fileID: 1460503012902104586}
   - component: {fileID: 1460503012902104587}
@@ -37,22 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1460503012902104588
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460503012902104590}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.16742074, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.9822742
 --- !u!114 &1460503012902104589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +54,7 @@ MonoBehaviour:
   _angrySpeed: 5
   _playerHere: 0
   _playerFrontHere: 0
+  _deathSe: {fileID: 0}
 --- !u!212 &1460503012902104586
 SpriteRenderer:
   m_ObjectHideFlags: 0
