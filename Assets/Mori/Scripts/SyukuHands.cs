@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// シュクシュクのうでの動きのスクリプト
@@ -11,16 +12,19 @@ public class SyukuHands : MonoBehaviour
     [SerializeField]
     private BoxCollider2D _armsCol;
     //ターゲットのTransform
-    [SerializeField, Header("プレイヤーのTransform取得")]
+    [SerializeField, Header("プレイヤーのTransform取得：bone_11")]
     private Transform _targetTra;
     //ターゲットのRigidbody2D
-    [SerializeField, Header("プレイヤーのRigidBody取得")]
+    [SerializeField, Header("プレイヤーのRigidBody取得：bone_11")]
     private Rigidbody2D _targetRig;
-    //プレイヤータグ取得用&引っ張り用
-    [SerializeField, Header("プレイヤー")]
+    //プレイヤータグ取得用
+    [SerializeField, Header("プレイヤータグ取得用：bone_11")]
     private GameObject _marimo;
+    //プレイヤー引っ張り用
+    [SerializeField, Header("プレイヤー引っ張る用：PlayerLead")]
+    private GameObject _leader;
     //プレイヤー操作のスクリプト
-    [SerializeField, Header("プレイヤーの操作スクリプト取得")]
+    [SerializeField, Header("プレイヤーの操作スクリプト取得：bone_11")]
     private PlayerMovement _marimoScr;
     //腕が動く条件にあるか
     [Header("索敵範囲内にプレイヤーがいるか、居る：true")]
@@ -44,6 +48,7 @@ public class SyukuHands : MonoBehaviour
     //引き寄せられるプレイヤーの速さ
     [SerializeField,Header("引き寄せる速さ")]
     private float _attractionSpeed = 1f;
+    private PlayerLeader playerLeader;
 
     /// <summary>
     /// 初期設定
@@ -78,6 +83,7 @@ public class SyukuHands : MonoBehaviour
         //まずい匂いになった時
         if (_marimo.gameObject.tag == "Odor")
         {
+            playerLeader.Set11Parent();
             HandShrink();
             _targetRig.bodyType = RigidbodyType2D.Dynamic;
             _chaching = false;
@@ -94,8 +100,21 @@ public class SyukuHands : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if (collision.gameObject.tag == "Florus" || collision.gameObject.tag == "Player")
+        //{
+        //    playerLeader.OutParent();
+        //    Debug.Log("キャッチ");
+        //    _chaching = true;
+        //    _targetRig.bodyType = RigidbodyType2D.Kinematic;
+        //    _marimoScr.enabled = false;
+        //}
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.tag == "Florus" || collision.gameObject.tag == "Player")
         {
+            playerLeader.OutParent();
             Debug.Log("キャッチ");
             _chaching = true;
             _targetRig.bodyType = RigidbodyType2D.Kinematic;
@@ -149,8 +168,8 @@ public class SyukuHands : MonoBehaviour
             _armsCol.offset = new Vector2(0, -_handColSize / 2);
             _armsCol.size = new Vector2(0.5f, _handColSize);
         }
-        _marimo.transform.position 
-            = Vector3.MoveTowards(_marimo.transform.position, this.transform.position, _attractionSpeed/100);
+        _leader.transform.position
+            = Vector2.MoveTowards(_leader.transform.position, this.transform.position, _attractionSpeed/100);
     }
 
 }

@@ -12,6 +12,7 @@ TagManager:
   - ground
   - mushroom
   - Enemy
+  - PlayerLead
   layers:
   - Default
   - TransparentFX
