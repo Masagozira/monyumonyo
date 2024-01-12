@@ -276,9 +276,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4505118955532188229}
   - component: {fileID: 4505118955532188228}
+<<<<<<< HEAD
   - component: {fileID: 4505118955532188231}
   - component: {fileID: 4505118955532188230}
   - component: {fileID: 8972954259044753559}
+=======
+  - component: {fileID: 1133059832285660288}
+  - component: {fileID: 4505118955532188231}
+  - component: {fileID: 2069264823539798493}
+>>>>>>> origin/Hurusawa2
   m_Layer: 0
   m_Name: Cha_MonyuSmile1
   m_TagString: Untagged
@@ -364,6 +370,105 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
+=======
+--- !u!82 &1133059832285660288
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505118955532188233}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+>>>>>>> origin/Hurusawa2
 --- !u!114 &4505118955532188231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,12 +495,21 @@ MonoBehaviour:
   - {fileID: 4505118956378422384}
   - {fileID: 4505118955915788637}
   m_Bounds:
+<<<<<<< HEAD
     m_Center: {x: -0.0017474294, y: -0.0006445646, z: 0}
     m_Extent: {x: 0.5933326, y: 0.5910144, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
 --- !u!114 &4505118955532188230
+=======
+    m_Center: {x: -0.0017479062, y: -0.000644505, z: 0}
+    m_Extent: {x: 0.5933321, y: 0.5910145, z: 0}
+  m_UseBatching: 1
+  m_AlwaysUpdate: 1
+  m_AutoRebind: 0
+--- !u!114 &2069264823539798493
+>>>>>>> origin/Hurusawa2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -410,6 +524,7 @@ MonoBehaviour:
   ChangeTime1: 5
   ChangeTime2: 4
   ChangeTime: 0
+<<<<<<< HEAD
   _playerEffect: {fileID: 8972954259044753559}
   Audio: {fileID: 0}
   FloruSE: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
@@ -434,6 +549,12 @@ MonoBehaviour:
   ChangeTime1: 5
   ChangeTime2: 4
   ChangeTime: 0
+=======
+  _playerEffect: {fileID: 3080526206925308861}
+  Audio: {fileID: 1133059832285660288}
+  FloruSE: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
+  OdorSE: {fileID: 8300000, guid: 1dcabadfa35051649b45af9a1b349625, type: 3}
+>>>>>>> origin/Hurusawa2
 --- !u!1 &4505118955713350409
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +842,7 @@ GameObject:
   - component: {fileID: 4505118955915788632}
   - component: {fileID: 4505118955915788635}
   - component: {fileID: 4505118955915788634}
+  - component: {fileID: 3080526206925308861}
   m_Layer: 0
   m_Name: bone_11
   m_TagString: Untagged
@@ -973,8 +1095,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpForce: 50
-  JumpUpPoint: 2.3
+  jumpForce: 60
+  JumpUpPoint: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -987,6 +1109,26 @@ MonoBehaviour:
   newSprite: {fileID: 21300000, guid: d624f7155426e9d48bb88f7c9ad0dbf6, type: 3}
   Audio: {fileID: 0}
   JumpSE: {fileID: 8300000, guid: 97df84d919e3b0a4b89483997d6c8244, type: 3}
+--- !u!114 &3080526206925308861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505118955915788636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f09600fb46c74493511448d8bd68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _florusEffect: {fileID: 5258346373041942994, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
+  _odorEffect: {fileID: 7577575350699562905, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
+  _failEffect: {fileID: 4341506540775228578, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
+  _floEffectTime: 5
+  _OdrEffectTime: 4
+  ChangeTime1: 5
+  ChangeTime2: 4
+  ChangeTime: 0
 --- !u!1 &4505118955930768819
 GameObject:
   m_ObjectHideFlags: 0

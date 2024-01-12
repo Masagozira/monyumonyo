@@ -15061,6 +15061,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2069264823539798493, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 1422084680}
+    - target: {fileID: 2069264823539798493, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
+      propertyPath: _playerEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4505118954979361322, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.15170093
@@ -15180,50 +15188,6 @@ PrefabInstance:
     - target: {fileID: 4505118955532188229, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: Audio
-      value: 
-      objectReference: {fileID: 1422084680}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: OdorSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 0b4049f56cc64994893964f61b3719c4, type: 3}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: odorSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 1dcabadfa35051649b45af9a1b349625, type: 3}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: FloruSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 7fea3dc4ace44c44cad3905032eb7649, type: 3}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: floruSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1422084680}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: cooldownTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: OdorSECooldownTime
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: odorSECooldownTime
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: FloruSECooldownTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: floruSECooldownTime
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4505118955532188233, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
       propertyPath: m_Name
@@ -15373,42 +15337,6 @@ PrefabInstance:
       propertyPath: Audio
       value: 
       objectReference: {fileID: 1422084680}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: JumpSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 97df84d919e3b0a4b89483997d6c8244, type: 3}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: jumpForce
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: newSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d624f7155426e9d48bb88f7c9ad0dbf6, type: 3}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: JumpUpPoint
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: rayDistance
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: ChangeObject
-      value: 
-      objectReference: {fileID: 1385944887}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: initialSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 45206bdec632010438ea84cce13820b6, type: 3}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505118955915788634, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-      propertyPath: mushroomLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 4505118955915788635, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.47658697
@@ -15617,9 +15545,51 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8972954259044753559, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
-    - {fileID: 4505118955532188230, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 1422084680}
+    - target: {fileID: 0}
+      propertyPath: OdorSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b4049f56cc64994893964f61b3719c4, type: 3}
+    - target: {fileID: 0}
+      propertyPath: odorSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 1dcabadfa35051649b45af9a1b349625, type: 3}
+    - target: {fileID: 0}
+      propertyPath: FloruSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fea3dc4ace44c44cad3905032eb7649, type: 3}
+    - target: {fileID: 0}
+      propertyPath: floruSE
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1422084680}
+    - target: {fileID: 0}
+      propertyPath: cooldownTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: OdorSECooldownTime
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: odorSECooldownTime
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FloruSECooldownTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: floruSECooldownTime
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 696786eebcdf8704e8a29f9f834ae78a, type: 3}
 --- !u!4 &1353929351 stripped
 Transform:
@@ -15990,6 +15960,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
 --- !u!114 &1385944900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16009,6 +15980,8 @@ MonoBehaviour:
   Audio: {fileID: 1422084680}
   FloruSE: {fileID: 8300000, guid: 7fea3dc4ace44c44cad3905032eb7649, type: 3}
   OdorSE: {fileID: 8300000, guid: 0b4049f56cc64994893964f61b3719c4, type: 3}
+=======
+>>>>>>> origin/Hurusawa2
 --- !u!1 &1391783680
 GameObject:
   m_ObjectHideFlags: 0
@@ -19700,26 +19673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754dfa9e97b023e4caac71504354f8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1709408982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709408947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188f09600fb46c74493511448d8bd68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _florusEffect: {fileID: 5258346373041942994, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
-  _odorEffect: {fileID: 7577575350699562905, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
-  _failEffect: {fileID: 4341506540775228578, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
-  _floEffectTime: 5
-  _OdrEffectTime: 4
-  ChangeTime1: 5
-  ChangeTime2: 4
-  ChangeTime: 0
 --- !u!1 &1721422233
 GameObject:
   m_ObjectHideFlags: 0
