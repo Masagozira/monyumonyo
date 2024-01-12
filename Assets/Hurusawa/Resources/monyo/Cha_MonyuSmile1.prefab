@@ -429,7 +429,11 @@ MonoBehaviour:
   _florusEffect: {fileID: 5258346373041942994, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
   _odorEffect: {fileID: 7577575350699562905, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
   _failEffect: {fileID: 4341506540775228578, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
-  _effectTime: 3
+  _floEffectTime: 5
+  _OdrEffectTime: 4
+  ChangeTime1: 5
+  ChangeTime2: 4
+  ChangeTime: 0
 --- !u!1 &4505118955713350409
 GameObject:
   m_ObjectHideFlags: 0
