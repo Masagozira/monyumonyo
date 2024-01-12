@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1460503012902104589}
   - component: {fileID: 1460503012902104586}
   - component: {fileID: 1460503012902104587}
+  - component: {fileID: 5841032882702655176}
   m_Layer: 7
   m_Name: Maru
   m_TagString: Untagged
@@ -54,7 +55,9 @@ MonoBehaviour:
   _angrySpeed: 5
   _playerHere: 0
   _playerFrontHere: 0
+  audioSource: {fileID: 0}
   _deathSe: {fileID: 0}
+  fadePanel: {fileID: 0}
 --- !u!212 &1460503012902104586
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +130,23 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!58 &5841032882702655176
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460503012902104590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.111932814, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.96217245
 --- !u!1 &1460503014506052410
 GameObject:
   m_ObjectHideFlags: 0

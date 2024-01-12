@@ -63,6 +63,7 @@ public class Maru : MonoBehaviour
             || (_player.tag == "Player" && _playerFrontHere == true))
         {
             ChaseCase();
+            Debug.Log("プレイヤー追跡中");
         }
         // 通常時、まずそうな匂い、それ以外
         else
