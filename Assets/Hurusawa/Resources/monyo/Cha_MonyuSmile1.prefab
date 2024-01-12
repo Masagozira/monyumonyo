@@ -276,10 +276,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4505118955532188229}
   - component: {fileID: 4505118955532188228}
-  - component: {fileID: 4505118955532188231}
-  - component: {fileID: 4505118955532188230}
-  - component: {fileID: 8972954259044753559}
   - component: {fileID: 1133059832285660288}
+  - component: {fileID: 4505118955532188231}
+  - component: {fileID: 2069264823539798493}
   m_Layer: 0
   m_Name: Cha_MonyuSmile1
   m_TagString: Player
@@ -365,76 +364,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4505118955532188231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505118955532188233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RootBone: {fileID: 4505118954979361320}
-  m_BoneTransforms:
-  - {fileID: 4505118954979361320}
-  - {fileID: 4505118956349716460}
-  - {fileID: 4505118955053658336}
-  - {fileID: 4505118956323865831}
-  - {fileID: 4505118955713350403}
-  - {fileID: 4505118955930768813}
-  - {fileID: 4505118956516033877}
-  - {fileID: 4505118955723446378}
-  - {fileID: 4505118956562015170}
-  - {fileID: 4505118956378422384}
-  - {fileID: 4505118955915788637}
-  m_Bounds:
-    m_Center: {x: -0.0017479062, y: -0.000644505, z: 0}
-    m_Extent: {x: 0.5933321, y: 0.5910145, z: 0}
-  m_UseBatching: 1
-  m_AlwaysUpdate: 1
-  m_AutoRebind: 0
---- !u!114 &4505118955532188230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505118955532188233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad105869ccb4912409bef30b247a003a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChangeTime1: 5
-  ChangeTime2: 4
-  ChangeTime: 0
-  _playerEffect: {fileID: 8972954259044753559}
-  Audio: {fileID: 1133059832285660288}
-  FloruSE: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
-  OdorSE: {fileID: 8300000, guid: 0b4049f56cc64994893964f61b3719c4, type: 3}
---- !u!114 &8972954259044753559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505118955532188233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188f09600fb46c74493511448d8bd68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _florusEffect: {fileID: 5258346373041942994, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
-  _odorEffect: {fileID: 7577575350699562905, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
-  _failEffect: {fileID: 4341506540775228578, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
-  _floEffectTime: 5
-  _OdrEffectTime: 4
-  ChangeTime1: 5
-  ChangeTime2: 4
-  ChangeTime: 0
 --- !u!82 &1133059832285660288
 AudioSource:
   m_ObjectHideFlags: 0
@@ -531,6 +460,56 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4505118955532188231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505118955532188233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RootBone: {fileID: 4505118954979361320}
+  m_BoneTransforms:
+  - {fileID: 4505118954979361320}
+  - {fileID: 4505118956349716460}
+  - {fileID: 4505118955053658336}
+  - {fileID: 4505118956323865831}
+  - {fileID: 4505118955713350403}
+  - {fileID: 4505118955930768813}
+  - {fileID: 4505118956516033877}
+  - {fileID: 4505118955723446378}
+  - {fileID: 4505118956562015170}
+  - {fileID: 4505118956378422384}
+  - {fileID: 4505118955915788637}
+  m_Bounds:
+    m_Center: {x: -0.0017479062, y: -0.000644505, z: 0}
+    m_Extent: {x: 0.5933321, y: 0.5910145, z: 0}
+  m_UseBatching: 1
+  m_AlwaysUpdate: 1
+  m_AutoRebind: 0
+--- !u!114 &2069264823539798493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505118955532188233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad105869ccb4912409bef30b247a003a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangeTime1: 5
+  ChangeTime2: 4
+  ChangeTime: 0
+  _playerEffect: {fileID: 3080526206925308861}
+  Audio: {fileID: 1133059832285660288}
+  FloruSE: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}
+  OdorSE: {fileID: 8300000, guid: 1dcabadfa35051649b45af9a1b349625, type: 3}
 --- !u!1 &4505118955713350409
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +797,7 @@ GameObject:
   - component: {fileID: 4505118955915788632}
   - component: {fileID: 4505118955915788635}
   - component: {fileID: 4505118955915788634}
+  - component: {fileID: 3080526206925308861}
   m_Layer: 0
   m_Name: bone_11
   m_TagString: Player
@@ -1070,8 +1050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  jumpForce: 50
-  JumpUpPoint: 2.3
+  jumpForce: 60
+  JumpUpPoint: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1082,8 +1062,28 @@ MonoBehaviour:
   ChangeObject: {fileID: 4505118955532188233}
   initialSprite: {fileID: 21300000, guid: 45206bdec632010438ea84cce13820b6, type: 3}
   newSprite: {fileID: 21300000, guid: d624f7155426e9d48bb88f7c9ad0dbf6, type: 3}
-  Audio: {fileID: 1133059832285660288}
+  Audio: {fileID: 0}
   JumpSE: {fileID: 8300000, guid: 97df84d919e3b0a4b89483997d6c8244, type: 3}
+--- !u!114 &3080526206925308861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505118955915788636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f09600fb46c74493511448d8bd68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _florusEffect: {fileID: 5258346373041942994, guid: 15ca9fdcc94d9434d865844693dda8b1, type: 3}
+  _odorEffect: {fileID: 7577575350699562905, guid: cabdefd87ca749646ae43f2a4a5e7076, type: 3}
+  _failEffect: {fileID: 4341506540775228578, guid: eca61d27e9a0bbc42b34ffb375b2f436, type: 3}
+  _floEffectTime: 5
+  _OdrEffectTime: 4
+  ChangeTime1: 5
+  ChangeTime2: 4
+  ChangeTime: 0
 --- !u!1 &4505118955930768819
 GameObject:
   m_ObjectHideFlags: 0
