@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 1e1b322af1c320e408c095cd1dd611a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a15d51d88712df54d872649664ca0ac1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1690226559009939918
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6db33eb480b9f438c551ba2c807dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
+  targetPosition: {x: -10, y: -3.2, z: 0}
+  moveSpeed: 10
   audioSource: {fileID: 0}
-  _deathSe: {fileID: 0}
+  _deathSe: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
   fadePanel: {fileID: 0}
   ChangeObject: {fileID: 1690226559009939904}
   initialSprite: {fileID: 21300000, guid: a15d51d88712df54d872649664ca0ac1, type: 3}
@@ -190,9 +190,9 @@ MonoBehaviour:
   Destroyobj: {fileID: 0}
   Obstacleobj: {fileID: 0}
   animator: {fileID: 0}
-  Clash_2: {fileID: 2382935341763895006, guid: 0e94d06108dbb1c488e67782917c1b77, type: 3}
+  Clash_2: {fileID: 2382935341763895006, guid: 8e8a3587dd06c6649949283f9359c816, type: 3}
   audioSource2: {fileID: 0}
-  DestroyobjSE: {fileID: 0}
+  DestroyobjSE: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
 --- !u!222 &1690226559009939912
 CanvasRenderer:
   m_ObjectHideFlags: 0
