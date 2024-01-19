@@ -35,6 +35,8 @@ public class PlayerEffect : MonoBehaviour
     public float ChangeTime2 = 4.0f;  // まずい匂い効果時間
     public float ChangeTime = 0.0f;  // 時間計測用
     private float CooldownTime = 3.0f;  // エフェクト切り替えのクールタイム
+    public float NonChangeTime = 0.0f;  // 時間計測用
+    private float NonCooldownTime = 0.5f;  // エフェクト切り替えのクールタイム
     private bool isInCooldown = false;  // 今クールタイム中かどうか
 
     //初期設定
@@ -66,8 +68,10 @@ public class PlayerEffect : MonoBehaviour
     {
         if (isInCooldown)
         {
-            if(Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.S))
+            NonChangeTime += Time.deltaTime;
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) && NonChangeTime >= NonCooldownTime)
             {
+                NonChangeTime = 0.0f;
                 FailEffect();
             }
             // クールタイム中は返す
@@ -100,6 +104,11 @@ public class PlayerEffect : MonoBehaviour
             istag2 = true;
             ChangeTime = 0.0f;
             Debug.Log("Odor");
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            FailEffect();
         }
     }
 
