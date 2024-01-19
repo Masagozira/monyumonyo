@@ -5,11 +5,17 @@ using UnityEngine;
 public class MaruSeach : MonoBehaviour
 {
     //プレイヤーのコライダー取得、識別用
-    [SerializeField]
     private CircleCollider2D _marimo;
+    private GameObject _marimoG;
     //プレイヤーのコライダー取得、識別用
     [SerializeField]
     private Maru _maru;
+
+    private void Start()
+    {
+        _marimoG = GameObject.Find("bone_11");
+        _marimo = _marimoG.GetComponent<CircleCollider2D>();
+    }
 
     /// <summary>
     /// 索敵範囲内に入った時

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SyukuBody : MonoBehaviour
 {
-    [SerializeField,Header("プレイヤーアタッチ")]
     private GameObject _marimo;
     private CircleCollider2D _marimoCol;
     private bool _playerDeath;
@@ -14,6 +13,7 @@ public class SyukuBody : MonoBehaviour
     AudioSource audioSource;
     private void Start()
     {
+        _marimo = GameObject.Find("bone_11");
         _playerDeath = false;
         audioSource = GetComponent<AudioSource>();
         _marimoCol = _marimo.GetComponent<CircleCollider2D>();

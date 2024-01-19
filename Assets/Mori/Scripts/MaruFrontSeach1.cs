@@ -2,19 +2,18 @@ using UnityEngine;
 /// <summary>
 /// 索敵範囲のBool管理
 /// </summary>
-public class SyukuSeachArea : MonoBehaviour
+public class MaruFrontSeach1 : MonoBehaviour
 {
-    //うでスクリプト取得
-    [SerializeField]
-    private SyukuHands _syukuHands;
     //プレイヤーのコライダー取得、識別用
-    private CircleCollider2D _marimoC;
+    private CircleCollider2D _marimo;
     private GameObject _marimoG;
-
+    //プレイヤーのコライダー取得、識別用
+    [SerializeField]
+    private StopMaru _maru;
     private void Start()
     {
         _marimoG = GameObject.Find("bone_11");
-        _marimoC = _marimoG.GetComponent<CircleCollider2D>();
+        _marimo = _marimoG.GetComponent<CircleCollider2D>();
     }
 
     /// <summary>
@@ -23,9 +22,9 @@ public class SyukuSeachArea : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision ==_marimoC)
+        if (collision == _marimo)
         {
-            _syukuHands._isHandsMove = true;
+            _maru._playerFrontHere = true;
         }
 
     }
@@ -35,6 +34,9 @@ public class SyukuSeachArea : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _syukuHands._isHandsMove = false;
+        if (collision == _marimo)
+        {
+            _maru._playerFrontHere = false;
+        }
     }
 }
