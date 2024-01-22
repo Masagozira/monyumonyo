@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class ChangeTags : MonoBehaviour
 {
+
+    [SerializeField, Header("Tag関係")]
     // タグ切り替え中の時間
     private bool istag1 = false;  // タグ1（"Florus"）に切り替え中かどうかを示すフラグ
     private bool istag2 = false;  // タグ2（"Odor"）に切り替え中かどうかを示すフラグ
@@ -16,27 +15,59 @@ public class ChangeTags : MonoBehaviour
     private float CooldownTime = 3.0f;  // 追加: クールダウン時間
     private bool isInCooldown = false;  // 追加: クールダウン中かどうかのフラグ
 
+    [SerializeField, Header("Tag切り替え中のエフェクト")]
     public PlayerEffect _playerEffect;
 
-
+    [SerializeField, Header("Tag切り替え中のSE")]
     //切り替え時のSE
     public AudioSource Audio;
     public AudioClip FloruSE; //いい匂いの時のSE
     public AudioClip OdorSE; //嫌な臭いの時のSE
 
+    private Rigidbody2D rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            collider.isTrigger = false; // 例: トリガーを無効にする
+            //Debug.Log("Collider found: " + collider.gameObject.name); // デバッグログを追加
+        }
+
+        Transform myTransform = GetComponent<Transform>();  // もしくは transform;
         Cursor.visible = false;
 
         // ゲーム開始時に"Player"タグを持つオブジェクトを検索し、ログに表示
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject obj in objs)
         {
+            Rigidbody2D childRb = obj.GetComponent<Rigidbody2D>();
+            if (childRb != null)
+            {
+                childRb.isKinematic = false;
+            }
+
+            // 各オブジェクトとその子オブジェクトのすべてのコライダーを取得
+            Collider2D[] childColliders = obj.GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D childCollider in childColliders)
+            {
+                childCollider.isTrigger = false; // 例: トリガーを無効にする
+                                                 // Debug.Log("Child Collider found: " + childCollider.gameObject.name); // デバッグログを追加
+            }
             //Debug.Log(obj.gameObject.name);
         }
 
+
         Transform parentTransform = transform; // あなたの親オブジェクトのTransformに置き換えてください
         GetLayersRecursive(parentTransform);
+
     }
 
     void Update()
@@ -71,7 +102,7 @@ public class ChangeTags : MonoBehaviour
             SwitchTag1();
             istag1 = true;
             ChangeTime = 0.0f;
-            Debug.Log("Florusに変更しました");
+            //Debug.Log("Florusに変更しました");
         }
 
         // "Odor"タグに切り替える条件
@@ -81,9 +112,30 @@ public class ChangeTags : MonoBehaviour
             SwitchTag2();
             istag2 = true;
             ChangeTime = 0.0f;
-            Debug.Log("Odorに変更しました");
+            //Debug.Log("Odorに変更しました");
         }
 
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (Transform child in transform)
+        {
+            // 子オブジェクトごとに条件をチェック
+            if (child.gameObject.tag == "Arms" && collision.gameObject.tag == "Arms")
+            {
+                //Debug.Log("Arms collided with child object: " + child.gameObject.name);
+            }
+        }
+    }
+
+    private void EnemyHitMove()
+    {
+        rb.isKinematic = true;
+        foreach (Transform child in transform)
+        {
+            rb.isKinematic = true;
+        }
     }
 
     // "Florus"タグに切り替えるメソッド
@@ -137,7 +189,7 @@ public class ChangeTags : MonoBehaviour
         {
             // 子オブジェクトのレイヤーを取得
             int layer = child.gameObject.layer;
-            Debug.Log(child.name + " のレイヤー: " + LayerMask.LayerToName(layer));
+            //Debug.Log(child.name + " のレイヤー: " + LayerMask.LayerToName(layer));
 
             // 再帰的に子オブジェクトのレイヤーを取得
             GetLayersRecursive(child);

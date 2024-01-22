@@ -3677,6 +3677,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &388642093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8133867104273958729, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+  m_PrefabInstance: {fileID: 1672622138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &388885196
 GameObject:
   m_ObjectHideFlags: 0
@@ -14581,7 +14586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930219110558255889, guid: e56b0bb6df795914fa13039628bd53ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4930219110662679929, guid: e56b0bb6df795914fa13039628bd53ad, type: 3}
       propertyPath: m_IsActive
@@ -18437,6 +18442,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8133867103935448346, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.3480291
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867103935448348, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.45292878
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867103935448348, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.33790714
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867103935448349, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.14045279
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867103935448349, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.30651516
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867104070016512, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.18058677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867104070016512, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.3224808
+      objectReference: {fileID: 0}
     - target: {fileID: 8133867104273958719, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: Audio
       value: 
@@ -18488,6 +18521,22 @@ PrefabInstance:
     - target: {fileID: 8133867104273958729, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: m_Name
       value: Cha_MonyuSmile1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867104922765839, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.05458554
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867104922765839, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.3327146
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867105188860603, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.55447286
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867105188860603, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.10902041
       objectReference: {fileID: 0}
     - target: {fileID: 8133867105188860606, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: Audio
@@ -20750,14 +20799,14 @@ PrefabInstance:
     - target: {fileID: 1460503012902104589, guid: fef406b3f030f394baa56d2271ecec6e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 2137897609}
+      objectReference: {fileID: 388642093}
     - target: {fileID: 1460503012902104589, guid: fef406b3f030f394baa56d2271ecec6e, type: 3}
       propertyPath: _deathSe
       value: 
       objectReference: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
     - target: {fileID: 1460503012902104589, guid: fef406b3f030f394baa56d2271ecec6e, type: 3}
       propertyPath: _maruArea
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1460503012902104589, guid: fef406b3f030f394baa56d2271ecec6e, type: 3}
       propertyPath: fadePanel
@@ -23579,11 +23628,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2137897609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8133867105188860621, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
-  m_PrefabInstance: {fileID: 1672622138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!58 &2137897622 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 8133867105188860609, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}

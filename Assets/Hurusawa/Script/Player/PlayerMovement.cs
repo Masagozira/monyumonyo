@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField, Header("プレイヤーの移動速度")]
     // 移動速度
     public float moveSpeed = 5.0f;
 
@@ -13,8 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // ジャンプ制限
+
     // 地面とキノコのレイヤーを取得
+    [SerializeField, Header("groundとmushroomのレイヤー取得")]
     public LayerMask groundLayer;
     public LayerMask mushroomLayer;
     public float rayDistance = 1.3f;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //スプライトを切り替えるオブジェクトの取得
+    [SerializeField, Header("ジャンプ時に切り替わるsprite")]
     public GameObject ChangeObject;
     //元のスプライト
     public Sprite initialSprite;
@@ -29,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite newSprite;
     private bool wasGrounded = true;
 
-    //SEを取得
+    [SerializeField, Header("ジャンプ時のSE")]
     public AudioSource Audio;
     public AudioClip JumpSE;
 
