@@ -45,6 +45,8 @@ public class Maru : MonoBehaviour
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
 
+    private Animator _maruWalkAnim;
+
     private void Start()
     {
         _player = GameObject.Find("bone_11");
@@ -52,6 +54,7 @@ public class Maru : MonoBehaviour
         _scare = this.transform.localScale;
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
+        _maruWalkAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -78,7 +81,7 @@ public class Maru : MonoBehaviour
     private void ChaseCase()
     {
         Debug.Log("Case1:Chase");
-
+        _maruWalkAnim.SetBool("Run",true);
         // プレイヤーに向かって移動
         transform.position = Vector2.MoveTowards(
             this.transform.position,
@@ -104,7 +107,7 @@ public class Maru : MonoBehaviour
     private void NonCase()
     {
         Debug.Log("Case2:NotFind");
-
+        _maruWalkAnim.SetBool("Run", false);
         // 基本歩行
         _maruAreaAdd += Time.deltaTime * 1.4f;
 

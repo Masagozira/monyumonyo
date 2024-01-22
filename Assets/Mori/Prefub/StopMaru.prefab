@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5841032882702655176}
   - component: {fileID: 2346989248387673380}
   - component: {fileID: 4865468912822613886}
+  - component: {fileID: 8372767341208581812}
   m_Layer: 7
   m_Name: StopMaru
   m_TagString: Untagged
@@ -243,6 +244,26 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   _deathSe: {fileID: 0}
   fadePanel: {fileID: 0}
+--- !u!95 &8372767341208581812
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460503012902104590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1460503014506052410
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,6 +45,8 @@ public class StopMaru : MonoBehaviour
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
 
+    private Animator _maruWalkAnim;
+
     private void Start()
     {
         _player = GameObject.Find("bone_11");
@@ -52,6 +54,7 @@ public class StopMaru : MonoBehaviour
         _scare = this.transform.localScale;
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
+        _maruWalkAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -68,6 +71,7 @@ public class StopMaru : MonoBehaviour
         // 通常時、まずそうな匂い、それ以外
         else
         {
+            _maruWalkAnim.SetBool("Run", false);
         }
 
         Debug.Log("プレイヤーが近くにいる : " + _playerHere + " " + "プレイヤーが前にいる : " + _playerFrontHere);
@@ -77,7 +81,7 @@ public class StopMaru : MonoBehaviour
     private void ChaseCase()
     {
         Debug.Log("Case1:Chase");
-
+        _maruWalkAnim.SetBool("Run", true);
         // プレイヤーに向かって移動
         transform.position = Vector2.MoveTowards(
             this.transform.position,

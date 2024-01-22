@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1460503012902104587}
   - component: {fileID: 5841032882702655176}
   - component: {fileID: 2346989248387673380}
+  - component: {fileID: 4322359983370174842}
   m_Layer: 7
   m_Name: Maru
   m_TagString: Untagged
@@ -50,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa461d93d18cd842ad8731f081f7386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _maruspeed: 2
   _maruArea: 5
   _angrySpeed: 5
@@ -244,6 +244,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4322359983370174842
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460503012902104590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea628f5effc40b74987a47f84dd32673, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1460503014506052410
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655851a6411f7bb428b439e2ae97b593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marimo: {fileID: 0}
   _maru: {fileID: 1460503012902104589}
 --- !u!1 &1460503014545072345
 GameObject:
@@ -378,5 +397,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1a188a2c295084784d410232ce3743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marimo: {fileID: 0}
   _maru: {fileID: 1460503012902104589}
