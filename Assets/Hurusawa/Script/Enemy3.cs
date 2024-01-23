@@ -1,27 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Enemy3 : MonoBehaviour
 {
     // 敵の移動関連
+    [SerializeField, Header("敵3の移動関係")]
     private bool isEnemyMove = false;
     public Vector3 targetPosition; // 移動先の座標を指定するためのVector3
     public float moveSpeed = 5f; // 移動速度
-
-    // プレイヤーと敵3のSEとフェードアウト
-    // SE
-    private bool isFadingOutAndPlayingSE = false;
-    [SerializeField, Header("プレイヤーが死ぬときのSE")]
-    public AudioSource audioSource;
-    public AudioClip _deathSe; // プレイヤーが死ぬときのSE
 
     // フェードアウト
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
     private SpriteRenderer spriteRenderer;
+
 
     [SerializeField, Header("敵3の起動時に切り替わるSprite")]
     // スプライトを切り替えるオブジェクトの取得
@@ -38,12 +33,28 @@ public class Enemy3 : MonoBehaviour
     // 敵1
     public GameObject Obstacleobj;
 
-    
-    [SerializeField, Header("障害物にぶつかったときのアニメーションとエフェクト、SE")]
+
+    [SerializeField, Header("障害物にぶつかったときのアニメーションとエフェクト")]
     public Animator animator;
-    public ParticleSystem Clash_2;
-    public AudioSource audioSource2;
+
+    //SE関連
+    [SerializeField, Header("SE関連")]
+    public AudioSource audioSource;
+
+    [SerializeField, Header("プレイヤーが死ぬときのSE")]
+    public AudioClip _deathSe; // プレイヤーが死ぬときのSE
+    private bool isFadingOutAndPlayingSE = false;
+
+    [SerializeField, Header("敵3起動時のSE")]
+    public AudioClip EnemySE;
+
+    [SerializeField, Header("障害物にぶつかったときのSE")]
     public AudioClip DestroyobjSE;
+
+    [SerializeField, Header("移動中のSE")]
+    public AudioClip MoveSE;
+
+
 
     void Start()
     {
@@ -79,7 +90,8 @@ public class Enemy3 : MonoBehaviour
         // 衝突したオブジェクトが特定のタグを持っている場合にDestroyobjを3秒後に削除
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(Destroyobj, 3f);
+            audioSource.PlayOneShot(_deathSe);
+            Destroy(Destroyobj, 1f);
         }
 
         // 衝突したオブジェクトが特定のタグを持っている場合にObstacleobjとエフェクトを3秒後に削除
@@ -95,6 +107,7 @@ public class Enemy3 : MonoBehaviour
         // 特定のタグのオブジェクトに当たった場合に敵の移動とスプライト切り替えを実行
         if (collider.CompareTag("Florus"))
         {
+           
             isEnemyMove = true;
             ChangeSprite();
         }
@@ -205,18 +218,6 @@ public class Enemy3 : MonoBehaviour
 
         //SEを再生
         audioSource.PlayOneShot(DestroyobjSE);
-
-        // パーティクルシステムのインスタンスを生成する。
-        ParticleSystem newParticle = Instantiate(Clash_2);
-
-        // パーティクルの発生場所をこのスクリプトをアタッチしているGameObjectの場所にする。
-        newParticle.transform.position = transform.position;
-
-        // パーティクルを発生させる。
-        newParticle.Play();
-
-        // インスタンス化したパーティクルシステムのGameObjectを3秒後に削除する
-        Destroy(newParticle.gameObject, 3f);
 
         // 障害物オブジェクトを3秒後に削除する
         Destroy(Obstacleobj, 3f);

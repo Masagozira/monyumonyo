@@ -33,7 +33,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7687573635743622875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,20 +180,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6db33eb480b9f438c551ba2c807dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: -10, y: -3.2, z: 0}
-  moveSpeed: 10
+  targetPosition: {x: 15, y: 0, z: 0}
+  moveSpeed: 5
   audioSource: {fileID: 0}
-  _deathSe: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
+  _deathSe: {fileID: 0}
   fadePanel: {fileID: 0}
-  ChangeObject: {fileID: 1690226559009939904}
-  initialSprite: {fileID: 21300000, guid: a15d51d88712df54d872649664ca0ac1, type: 3}
-  newSprite: {fileID: 21300000, guid: 0898009b9196a7047a31bd6e3764e95d, type: 3}
+  ChangeObject: {fileID: 0}
+  initialSprite: {fileID: 0}
+  newSprite: {fileID: 0}
   Destroyobj: {fileID: 0}
   Obstacleobj: {fileID: 0}
   animator: {fileID: 0}
-  Clash_2: {fileID: 2382935341763895006, guid: 8e8a3587dd06c6649949283f9359c816, type: 3}
   audioSource2: {fileID: 0}
-  DestroyobjSE: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
+  DestroyobjSE: {fileID: 0}
 --- !u!222 &1690226559009939912
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -201,3 +201,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690226559009939904}
   m_CullTransparentMesh: 1
+--- !u!1 &5321558954253662480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7687573635743622875}
+  - component: {fileID: 4123815166445800453}
+  - component: {fileID: 1485588939186978290}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7687573635743622875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321558954253662480}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.38, y: 0, z: 2}
+  m_LocalScale: {x: 2, y: 1.983, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1690226559009939913}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4123815166445800453
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321558954253662480}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1485588939186978290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321558954253662480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef621a7726106e498e180640be12055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clash_2: {fileID: 2382935341763895006, guid: 8e8a3587dd06c6649949283f9359c816, type: 3}
+  effectDuration: 3
