@@ -13,6 +13,8 @@ TagManager:
   - mushroom
   - Enemy
   - PlayerLead
+  - woll
+  - Destroyobj
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - Enemy
   - ground
   - mushroom
-  - 
+  - Destroyobj
   - 
   - 
   - 
