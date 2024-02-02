@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf97c37b3a365439c0efeb4308513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _maruspeed: 2
   _maruArea: 5
   _angrySpeed: 5
@@ -244,6 +245,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   _deathSe: {fileID: 0}
   fadePanel: {fileID: 0}
+  gameOverScene: Gameover1
 --- !u!95 &8372767341208581812
 Animator:
   serializedVersion: 5
@@ -254,7 +256,7 @@ Animator:
   m_GameObject: {fileID: 1460503012902104590}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea659ad1df9e9de43b2830315aeb0864, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

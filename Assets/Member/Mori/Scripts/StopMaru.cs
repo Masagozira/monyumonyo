@@ -9,26 +9,26 @@ public class StopMaru : MonoBehaviour
     public GameObject _player;
 
     // �ʏ���s�X�s�[�h
-    [SerializeField, Header("�ʏ펞�̕��s�X�s�[�h")]
+    [SerializeField, Header("WalkSpeed")]
     private float _maruspeed = 2;
 
     // �ʏ���s�͈�
-    [SerializeField, Header("�ʏ펞�̕��s�͈�")]
+    [SerializeField, Header("WalkArea")]
     private float _maruArea = 5;
 
     // ���s�p�A����������_maruArea�̒l�ɂȂ���������Ԃ�
     private float _maruAreaAdd = 0;
 
     // �ǂ�������X�s�[�h
-    [SerializeField, Header("�v���C���[�������̕��s�X�s�[�h")]
+    [SerializeField, Header("RunSpeed")]
     private float _angrySpeed = 5f;
 
     // �v���C���[�����G�͈͓��ɂ��邩�F�S��
-    [Header("���G�͈͓��Ƀv���C���[�����邩�A����Ftrue")]
+    [Header("Serarch Area In Player : true")]
     public bool _playerHere = false;
 
     // �v���C���[�����G�͈͓��ɂ��邩�F�O��
-    [Header("�O�����G�͈͓��Ƀv���C���[�����邩�A����Ftrue")]
+    [Header("Front Serarch Area In Player : true")]
     public bool _playerFrontHere = false;
 
     // �����̕ύX
@@ -69,7 +69,7 @@ public class StopMaru : MonoBehaviour
             || (_player.tag == "Player" && _playerFrontHere == true))
         {
             ChaseCase();
-            Debug.Log("�v���C���[�ǐՒ�");
+            Debug.Log("Chase");
         }
         // �ʏ펞�A�܂������ȓ����A����ȊO
         else
@@ -77,7 +77,7 @@ public class StopMaru : MonoBehaviour
             _maruWalkAnim.SetBool("Run", false);
         }
 
-        Debug.Log("�v���C���[���߂��ɂ��� : " + _playerHere + " " + "�v���C���[���O�ɂ��� : " + _playerFrontHere);
+        Debug.Log(" FindPlayer : " + _playerHere + " " + "FindPlayerInFront : " + _playerFrontHere);
         Debug.Log(_playerDeath);
     }
 

@@ -8,6 +8,10 @@ public class GoalEff : MonoBehaviour
     private CircleCollider2D _marimoC;
     [SerializeField]
     private GameObject _goalEff;
+    [SerializeField]
+    private GameObject _goalEff2;
+    [SerializeField]
+    private bool _isEffF = false;
     private void Start()
     {
         _marimo = GameObject.Find("bone_11");
@@ -17,7 +21,13 @@ public class GoalEff : MonoBehaviour
     {
         if (collision == _marimoC)
         {
-            Instantiate(_goalEff);
+            if(!_isEffF)
+            {
+                Instantiate(_goalEff, this.transform);
+                Instantiate(_goalEff2, this.transform);
+                _isEffF = true;
+            }
+
         }
     }
 }

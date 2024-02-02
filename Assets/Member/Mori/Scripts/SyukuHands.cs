@@ -12,13 +12,13 @@ public class SyukuHands : MonoBehaviour
     [SerializeField]
     private BoxCollider2D _armsCol;
     //ターゲットのTransform
-    public Transform _targetTra;
+    private Transform _targetTra;
     //ターゲットのRigidbody2D
-    public Rigidbody2D _targetRig;
+    private Rigidbody2D _targetRig;
     //プレイヤータグ取得用
-    public GameObject _marimo;
+    private GameObject _marimo;
     //プレイヤー親取得
-    public GameObject _marimoPa;
+    private GameObject _marimoPa;
     //プレイヤー引っ張り用
     [SerializeField]
     private GameObject _leader;
@@ -81,6 +81,10 @@ public class SyukuHands : MonoBehaviour
         else if (_chaching == true)
         {
             HandShrink();
+            if(_handLong<=1f)
+            {
+                Debug.LogWarning("Player:Die");
+            }
         }
 
         //bool確認
