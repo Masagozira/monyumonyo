@@ -87,8 +87,10 @@ public class SyukuHands : MonoBehaviour
             }
         }
 
-        //bool確認
-        Debug.Log("Playerが索敵範囲内にいる：" + _isHandsMove + "," + "掴んでいる：" + _chaching);
+        //動作確認
+        Debug.Log("Playerが索敵範囲内にいる：" + _isHandsMove + " , " 
+            + "掴んでいる：" + _chaching + " , " 
+            + "プレイヤーのタグ：" + _marimo.gameObject.tag);
 
         //まずい匂いになった時
         if (_marimo.gameObject.tag == "Odor")

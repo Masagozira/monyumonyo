@@ -5,44 +5,44 @@ using UnityEngine.UI;
 
 public class StopMaru : MonoBehaviour
 {
-    // �ǂ���������gameobject
+    // PlayerGameobject
     public GameObject _player;
 
-    // �ʏ���s�X�s�[�h
+    // MaruWalkSpeed
     [SerializeField, Header("WalkSpeed")]
     private float _maruspeed = 2;
 
-    // �ʏ���s�͈�
+    // MaruWalkArea
     [SerializeField, Header("WalkArea")]
     private float _maruArea = 5;
 
-    // ���s�p�A����������_maruArea�̒l�ɂȂ���������Ԃ�
+    // ??
     private float _maruAreaAdd = 0;
 
-    // �ǂ�������X�s�[�h
+    // MaruRunSpeed
     [SerializeField, Header("RunSpeed")]
     private float _angrySpeed = 5f;
 
-    // �v���C���[�����G�͈͓��ɂ��邩�F�S��
-    [Header("Serarch Area In Player : true")]
+    // SearchToPlayerInNear
+    [Header("Player In Search Area : true")]
     public bool _playerHere = false;
 
-    // �v���C���[�����G�͈͓��ɂ��邩�F�O��
-    [Header("Front Serarch Area In Player : true")]
+    // SearchToPlayerInFront
+    [Header("Player In Front Serarch Area : true")]
     public bool _playerFrontHere = false;
 
-    // �����̕ύX
+    // MaruDirection
     private int _direction = 1;
     private Vector3 _scare;
 
     private bool _playerDeath;
     private CircleCollider2D _playerCol;
 
-    [SerializeField, Header("�v���C���[�����ʂƂ���SE")]
+    [SerializeField, Header("PlayerDieSE")]
     public AudioSource audioSource;
     public AudioClip _deathSe;
 
-    [SerializeField, Header("�t�F�[�h�A�E�g�p�̃p�l��")]
+    [SerializeField, Header("FadeInPanel")]
     private UnityEngine.UI.Image fadePanel;
 
     private Animator _maruWalkAnim;
@@ -52,8 +52,8 @@ public class StopMaru : MonoBehaviour
 
     private void Start()
     {
+        //Setting
         _player = GameObject.Find("bone_11");
-        // �����ݒ�F����
         _scare = this.transform.localScale;
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
@@ -71,7 +71,7 @@ public class StopMaru : MonoBehaviour
             ChaseCase();
             Debug.Log("Chase");
         }
-        // �ʏ펞�A�܂������ȓ����A����ȊO
+        // :
         else
         {
             _maruWalkAnim.SetBool("Run", false);
