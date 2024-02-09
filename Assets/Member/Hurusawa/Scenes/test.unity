@@ -5861,7 +5861,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12051,7 +12051,7 @@ PrefabInstance:
     - target: {fileID: 1690226559009939905, guid: ceb43eb27e7a20d47aacf04c0a2341c1, type: 3}
       propertyPath: MoveSE
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: d89ce3e1085123c4c958c64cb43dd211, type: 3}
     - target: {fileID: 1690226559009939905, guid: ceb43eb27e7a20d47aacf04c0a2341c1, type: 3}
       propertyPath: Enemyobj
       value: 
@@ -12167,6 +12167,10 @@ PrefabInstance:
     - target: {fileID: 1690226559009939913, guid: ceb43eb27e7a20d47aacf04c0a2341c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690226559009939915, guid: ceb43eb27e7a20d47aacf04c0a2341c1, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1690226559009939919, guid: ceb43eb27e7a20d47aacf04c0a2341c1, type: 3}
       propertyPath: m_SortingOrder

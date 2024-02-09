@@ -31,8 +31,8 @@ public class PlayerEffect : MonoBehaviour
     // エフェクト時間管理
     private bool istag1 = false;  //プレイヤータグが"Florus"のときtrue
     private bool istag2 = false;  //プレイヤータグが"Odor"のときtrue
-    public float ChangeTime1 = 5.0f;  // いい匂い効果時間
-    public float ChangeTime2 = 4.0f;  // まずい匂い効果時間
+    public float ChangeTime1 = 4.5f;  // いい匂い効果時間
+    public float ChangeTime2 = 3.5f;  // まずい匂い効果時間
     public float ChangeTime = 0.0f;  // 時間計測用
     private float CooldownTime = 3.0f;  // エフェクト切り替えのクールタイム
     public float NonChangeTime = 0.0f;  // 時間計測用

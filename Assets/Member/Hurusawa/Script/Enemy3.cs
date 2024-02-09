@@ -11,6 +11,7 @@ public class Enemy3 : MonoBehaviour
     private bool isEnemyMove = false;
     public Vector3 targetPosition; // 移動先の座標を指定するためのVector3
     public float moveSpeed = 5f; // 移動速度
+    public Animator Moveanimator;
 
     // フェードアウト
     [SerializeField, Header("フェードアウト用のパネル")]
@@ -42,14 +43,14 @@ public class Enemy3 : MonoBehaviour
     public AudioClip _deathSe; // プレイヤーが死ぬときのSE
     private bool isFadingOutAndPlayingSE = false;
 
-    [SerializeField, Header("敵3起動時のSE")]
-    public AudioClip EnemySE;
-
     [SerializeField, Header("障害物にぶつかったときのSE")]
     public AudioClip DestroyobjSE;
 
     [SerializeField, Header("移動中のSE")]
     public AudioClip MoveSE;
+    private bool PlayedMoveSE = false;
+    private bool isMoveSE = false;
+
 
 
 
@@ -104,9 +105,12 @@ public class Enemy3 : MonoBehaviour
         // 特定のタグのオブジェクトに当たった場合に敵の移動とスプライト切り替えを実行
         if (collider.CompareTag("Florus"))
         {
-           
+
             isEnemyMove = true;
             ChangeSprite();
+
+            //移動中のアニメーションの再生
+            Moveanimator.SetBool("MoveBool", true);
         }
     }
 
@@ -116,8 +120,6 @@ public class Enemy3 : MonoBehaviour
         // 目標座標への方向ベクトルを計算
         Vector3 direction = targetPosition - transform.position;
 
-        audioSource.PlayOneShot(MoveSE);
-
         // 方向ベクトルの長さがゼロでない場合に移動
         if (direction.magnitude > 0.01f)
         {
@@ -126,8 +128,27 @@ public class Enemy3 : MonoBehaviour
 
             // 移動
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+            // 移動中でSEが再生されていない場合
+            if (!PlayedMoveSE)
+            {
+                // SEを再生
+                audioSource.PlayOneShot(MoveSE);
+                // 再生済みのフラグをセット
+                PlayedMoveSE = true;
+                // 移動SEが再生中でないことを示すフラグをセット
+                isMoveSE = true;
+            }
+        }
+        else if (isMoveSE)
+        {
+            // 指定座標に到達したら再生中のSEを停止
+            audioSource.Stop();
+            // 移動SEが再生中でないことを示すフラグをリセット
+            isMoveSE = false;
         }
     }
+
 
     //プレイヤーとぶつかったときのフェードアウトとSEの再生メソッド
     private IEnumerator FadeOutAndPlaySE()
