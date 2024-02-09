@@ -158,7 +158,7 @@ public class SyukuHands : MonoBehaviour
             _targetRig.bodyType = RigidbodyType2D.Kinematic;
             _marimoScr.enabled = false;
 
-             // プレイヤーとその子オブジェクトのRigidbodyType2Dを切り替える
+            // プレイヤーとその子オブジェクトのRigidbodyType2Dを切り替える
             Rigidbody2D[] childRigidbodies = _marimoPa.GetComponentsInChildren<Rigidbody2D>();
             foreach (Rigidbody2D childRigidbody in childRigidbodies)
             {
