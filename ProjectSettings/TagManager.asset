@@ -15,6 +15,7 @@ TagManager:
   - PlayerLead
   - woll
   - Destroyobj
+  - Stone
   layers:
   - Default
   - TransparentFX

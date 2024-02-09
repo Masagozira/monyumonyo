@@ -16,7 +16,7 @@ public class StopMaru : MonoBehaviour
     [SerializeField, Header("WalkArea")]
     private float _maruArea = 5;
 
-    // ??
+    // Add with Time until MaruWalkArea
     private float _maruAreaAdd = 0;
 
     // MaruRunSpeed
@@ -62,9 +62,9 @@ public class StopMaru : MonoBehaviour
 
     private void Update()
     {
-        // �v���C���[�����G�͈͓��ɑ��݂��Ă���ǂ�������
-        // �E�����������ȓ��������G�͈͓�
-        // �E�ʏ펞���O�����G�͈͓�
+        // プレイヤーが索敵範囲内に存在してたら追いかける
+        // ・美味しそうな匂いかつ索敵範囲内
+        // ・通常時かつ前方索敵範囲内
         if ((_player.tag == "Florus" && (_playerHere == true || _playerFrontHere == true))
             || (_player.tag == "Player" && _playerFrontHere == true))
         {
@@ -85,23 +85,23 @@ public class StopMaru : MonoBehaviour
     {
         Debug.Log("Case1:Chase");
         _maruWalkAnim.SetBool("Run", true);
-        // �v���C���[�Ɍ������Ĉړ�
+        // プレイヤーに向かって移動
         transform.position = Vector2.MoveTowards(
             this.transform.position,
             _player.transform.position,
             _angrySpeed * Time.deltaTime);
 
-        // �����v���C���[.x���������+��������
+        // もしプレイヤー.xが自分より+だったら
         if (this.transform.position.x < _player.transform.position.x)
         {
-            // �E����
+            // 右向き
             _scare.x = -1;
             this.transform.localScale = _scare;
         }
-        // �����v���C���[.x���������-��������
+        // もしプレイヤー.xが自分より-だったら
         else
         {
-            // ������
+            // 左向き
             _scare.x = 1;
             this.transform.localScale = _scare;
         }
@@ -111,22 +111,22 @@ public class StopMaru : MonoBehaviour
     {
         Debug.Log("Case2:NotFind");
 
-        // ��{���s
+        // 基本歩行
         _maruAreaAdd += Time.deltaTime * 1.4f;
 
-        // �ϐ������l�ɒB�����烊�Z�b�g�A�������]
+        // 変数が一定値に達したらリセット、向き反転
         if (_maruAreaAdd >= _maruArea)
         {
             _maruAreaAdd = 0;
             _direction *= -1;
 
-            // ���s������+�Ȃ�E����
+            // 歩行向きが+なら右向き
             if (_direction == 1)
             {
                 _scare.x = -1;
                 this.transform.localScale = _scare;
             }
-            // ���s������-�Ȃ獶����
+            // 歩行向きが-なら左向き
             else
             {
                 _scare.x = 1;
@@ -134,7 +134,7 @@ public class StopMaru : MonoBehaviour
             }
         }
 
-        // ����������
+        // 歩き続ける
         transform.position = new Vector3(
             transform.position.x + _maruspeed * Time.fixedDeltaTime * _direction,
             this.transform.position.y,
@@ -143,8 +143,8 @@ public class StopMaru : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // �v���C���[�����S������
-        //�ύX�@collider == _playerCol ���� collision.gameObject.CompareTag("Player")��collision.gameObject.CompareTag("Florus")
+        // プレイヤーが死亡した時
+        //変更　collider == _playerCol から collision.gameObject.CompareTag("Player")とcollision.gameObject.CompareTag("Florus")
         if (_playerDeath == false && collision.gameObject.CompareTag("Player"))
         {
             Debug.LogWarning("HitBody");
@@ -162,16 +162,16 @@ public class StopMaru : MonoBehaviour
 
     private IEnumerator FadeOutAndPlaySE()
     {
-        // �t�F�[�h�A�E�g�̊J�n
+        // フェードアウトの開始
         StartCoroutine(FadeOut());
 
-        // SE���Đ�
+        // SEを再生
         audioSource.PlayOneShot(_deathSe);
 
-        // SE�̍Đ����I���܂őҋ@
+        // SEの再生が終わるまで待機
         yield return new WaitForSeconds(_deathSe.length);
 
-        // �V�[���J��
+        // シーン遷移
         SceneManager.LoadScene(gameOverScene);
     }
 

@@ -80,7 +80,9 @@ public class Maru : MonoBehaviour
         Debug.Log("プレイヤーが近くにいる : " + _playerHere + " " + "プレイヤーが前にいる : " + _playerFrontHere);
         Debug.Log(_playerDeath);
     }
-
+    /// <summary>
+    /// 追っているとき
+    /// </summary>
     private void ChaseCase()
     {
         Debug.Log("Case1:Chase");
@@ -106,7 +108,9 @@ public class Maru : MonoBehaviour
             this.transform.localScale = _scare;
         }
     }
-
+    /// <summary>
+    /// 通常時
+    /// </summary>
     private void NonCase()
     {
         Debug.Log("Case2:NotFind");
