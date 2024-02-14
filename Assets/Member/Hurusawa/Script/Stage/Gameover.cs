@@ -4,11 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Gameover2 : MonoBehaviour
+public class Gameover : MonoBehaviour
 {
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
 
+    public string gameClearScene = "Gameover1";
+
+    void Start()
+    {
+        Cursor.visible = false;
+    }
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Odor") || other.CompareTag("Florus"))
@@ -25,7 +32,7 @@ public class Gameover2 : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
@@ -38,7 +45,7 @@ public class Gameover2 : MonoBehaviour
         }
 
         fadePanel.color = targetColor;
-        SceneManager.LoadScene("Gameover2");
+         SceneManager.LoadScene(gameClearScene);
     }
 
 }

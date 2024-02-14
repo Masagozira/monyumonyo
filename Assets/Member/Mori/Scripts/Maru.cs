@@ -182,7 +182,7 @@ public class Maru : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.5f;
+        float fadeTime = 1.3f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);

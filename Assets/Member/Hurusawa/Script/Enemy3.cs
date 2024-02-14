@@ -79,7 +79,8 @@ public class Enemy3 : MonoBehaviour
         if (!isFadingOutAndPlayingSE)
         {
             // 衝突したオブジェクトが特定のタグを持っている場合にフェードアウトとSE再生を実行
-            if (collision.gameObject.tag == "Odor" || collision.gameObject.tag == "Florus" || collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Odor" || collision.gameObject.tag == "Florus"
+                                                   || collision.gameObject.tag == "Player")
             {
                 StartCoroutine(FadeOutAndPlaySE());
             }

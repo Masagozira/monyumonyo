@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SyukuBody : MonoBehaviour
 {
     private GameObject _marimo;
     private CircleCollider2D _marimoCol;
     private bool _playerDeath;
-    [SerializeField, Header("ƒvƒŒƒCƒ„[‚ª€‚Ê‚Æ‚«‚ÌSE")]
+    [SerializeField, Header("ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ê‚Æ‚ï¿½ï¿½ï¿½SE")]
     public AudioSource Audio;
     public AudioClip _deathSe;
     AudioSource audioSource;
+
+    [SerializeField, Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆç”¨ã®ãƒ‘ãƒãƒ«")]
+    private UnityEngine.UI.Image fadePanel;
+
+    private Animator _maruWalkAnim;
+
+    [SerializeField, Header("æ­»äº¡å¾Œã®é·ç§»å…ˆã‚·ãƒ¼ãƒ³")]
+    public string gameOverScene = "Gameover1";
+
     private void Start()
     {
-        _marimo = GameObject.Find("bone_11");
+        _marimo = GameObject.Find("Cha_MonyuSmile1");
         _playerDeath = false;
         audioSource = GetComponent<AudioSource>();
         _marimoCol = _marimo.GetComponent<CircleCollider2D>();
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ª“–‚½‚Á‚½
+    /// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,13 +38,48 @@ public class SyukuBody : MonoBehaviour
         if (_playerDeath == false && collision.collider == _marimoCol)
         {
             _playerDeath = true;
-            Audio.PlayOneShot(_deathSe);
-            Invoke("ReDeath", 10f);
+            //Audio.PlayOneShot(_deathSe);
+           // Invoke("ReDeath", 10f);
+            StartCoroutine(FadeOutAndPlaySE());
         }
+
     }
 
     private void ReDeath()
     {
         _playerDeath = false;
+    }
+
+    private IEnumerator FadeOutAndPlaySE()
+    {
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã®é–‹å§‹
+        yield return StartCoroutine(FadeOut());
+
+        // SEã‚’å†ç”Ÿ
+        Audio.PlayOneShot(_deathSe);
+
+        // SEã®å†ç”ŸãŒçµ‚ã‚ã‚‹ã¾ã§å¾…æ©Ÿ
+        yield return new WaitForSeconds(_deathSe.length);
+
+        // ã‚·ãƒ¼ãƒ³é·ç§»
+        SceneManager.LoadScene(gameOverScene);
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        float fadeTime = 1.3f;
+
+        Color originalColor = fadePanel.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        while (elapsedTime < fadeTime)
+        {
+            fadePanel.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        fadePanel.color = targetColor;
     }
 }

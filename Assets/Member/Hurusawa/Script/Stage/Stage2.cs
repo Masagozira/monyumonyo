@@ -9,6 +9,11 @@ public class Stage2 : MonoBehaviour
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
 
+      void Start()
+    {
+        Cursor.visible = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Odor") || other.CompareTag("Florus"))
@@ -20,7 +25,7 @@ public class Stage2 : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.3f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);

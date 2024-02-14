@@ -24,19 +24,19 @@ public class PlayerEffect : MonoBehaviour
     private ParticleSystem.MainModule _failEffectTime;
 
     [SerializeField, Header("いい匂い効果時間")]
-    private float _floEffectTime = 5f;
+    private float _floEffectTime = 4f;
     [SerializeField, Header("まずい匂い効果時間")]
-    private float _OdrEffectTime = 4f;
+    private float _OdrEffectTime = 3f;
 
     // エフェクト時間管理
     private bool istag1 = false;  //プレイヤータグが"Florus"のときtrue
     private bool istag2 = false;  //プレイヤータグが"Odor"のときtrue
-    public float ChangeTime1 = 4.5f;  // いい匂い効果時間
-    public float ChangeTime2 = 3.5f;  // まずい匂い効果時間
+    public float ChangeTime1 = 4f;  // いい匂い効果時間
+    public float ChangeTime2 = 3f;  // まずい匂い効果時間
     public float ChangeTime = 0.0f;  // 時間計測用
-    private float CooldownTime = 3.0f;  // エフェクト切り替えのクールタイム
+    private float CooldownTime = 2f;  // エフェクト切り替えのクールタイム
     public float NonChangeTime = 0.0f;  // 時間計測用
-    private float NonCooldownTime = 0.5f;  // エフェクト切り替えのクールタイム
+    private float NonCooldownTime = 0f;  // エフェクト切り替えのクールタイム
     private bool isInCooldown = false;  // 今クールタイム中かどうか
 
     //初期設定

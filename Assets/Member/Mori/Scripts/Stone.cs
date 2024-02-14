@@ -24,6 +24,7 @@ public class Stone : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("HIT");
         if (collision.gameObject.tag == "Player")
         {
             _canMove = false;

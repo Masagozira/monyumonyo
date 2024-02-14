@@ -48,7 +48,7 @@ public class StopMaru : MonoBehaviour
     private Animator _maruWalkAnim;
 
     [SerializeField, Header("死亡後の遷移先シーン")]
-    public string gameOverScene = "Gameover1";
+    public string gameOverScene = "Gameover2";
 
     private void Start()
     {

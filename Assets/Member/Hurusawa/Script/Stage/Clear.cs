@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Clear : MonoBehaviour
 {
+
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
+
+    public string gameClearScene = "Clear1";
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,7 +24,7 @@ public class Clear : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.1f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
@@ -34,6 +37,6 @@ public class Clear : MonoBehaviour
         }
 
         fadePanel.color = targetColor;
-        SceneManager.LoadScene("Clear");
+        SceneManager.LoadScene(gameClearScene);
     }
 }

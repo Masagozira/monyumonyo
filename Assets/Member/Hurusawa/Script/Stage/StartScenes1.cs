@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScenes : MonoBehaviour
+public class StartScenes1 : MonoBehaviour
 {
     public AudioClip sound;
     public AudioSource Audio;
@@ -27,6 +27,6 @@ public class StartScenes : MonoBehaviour
     void Scene()
     {
         // シーンを遷移
-        SceneManager.LoadScene("StageSample 1");
+        SceneManager.LoadScene("Start");
     }
 }

@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Member/Mori/Scenes/StageSample 1.unity
     guid: 24ef1488beb050a4aaf78899f806973d
   - enabled: 1
-    path: Assets/Member/Hurusawa/Scenes/Stage1.unity
-    guid: 764a301ae00aa9740b6dad515b7ab5f8
-  - enabled: 1
     path: Assets/Member/Mori/Scenes/StageSample 2.unity
     guid: 070c0d90f6b26ef40b76749749f46ee4
+  - enabled: 1
+    path: Assets/Member/Hurusawa/Scenes/Stage1.unity
+    guid: 764a301ae00aa9740b6dad515b7ab5f8
   - enabled: 1
     path: Assets/Member/Hurusawa/Scenes/Select.unity
     guid: 497ac1fb9a9b71e40adc2ab129ff6c23
@@ -30,8 +30,11 @@ EditorBuildSettings:
     path: Assets/Member/Hurusawa/Scenes/Gameover2.unity
     guid: 524b9505209e2c94d8182c9cb0192cb6
   - enabled: 1
-    path: Assets/Member/Hurusawa/Scenes/Clear.unity
+    path: Assets/Member/Hurusawa/Scenes/Clear1.unity
     guid: db1da5c4793f25b44ba4f8fb8fdff7b9
+  - enabled: 1
+    path: Assets/Member/Hurusawa/Scenes/Clear2.unity
+    guid: 3dd6b61de10086444908196a777a2b36
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729

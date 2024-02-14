@@ -81,15 +81,15 @@ public class SyukuHands : MonoBehaviour
         else if (_chaching == true)
         {
             HandShrink();
-            if(_handLong<=1f)
+            if (_handLong <= 1f)
             {
                 Debug.LogWarning("Player:Die");
             }
         }
 
         //動作確認
-        Debug.Log("Playerが索敵範囲内にいる：" + _isHandsMove + " , " 
-            + "掴んでいる：" + _chaching + " , " 
+        Debug.Log("Playerが索敵範囲内にいる：" + _isHandsMove + " , "
+            + "掴んでいる：" + _chaching + " , "
             + "プレイヤーのタグ：" + _marimo.gameObject.tag);
 
         //まずい匂いになった時
@@ -112,7 +112,10 @@ public class SyukuHands : MonoBehaviour
             Collider2D[] childColliders = _marimoPa.GetComponentsInChildren<Collider2D>();
             foreach (Collider2D childCollider in childColliders)
             {
-                childCollider.enabled = true;
+                if (childCollider.gameObject != _marimoPa)
+                {
+                    childCollider.enabled = true;
+                }
             }
         }
     }
@@ -130,7 +133,7 @@ public class SyukuHands : MonoBehaviour
         {
             Debug.Log("キャッチT");
             _chaching = true;
-            _targetRig.bodyType = RigidbodyType2D.Kinematic;
+            // _targetRig.bodyType = RigidbodyType2D.Kinematic;
             _marimoPa.transform.parent = _leader.transform;
             _marimoScr.enabled = false;
 
@@ -138,13 +141,19 @@ public class SyukuHands : MonoBehaviour
             Rigidbody2D[] childRigidbodies = _marimoPa.GetComponentsInChildren<Rigidbody2D>();
             foreach (Rigidbody2D childRigidbody in childRigidbodies)
             {
-                childRigidbody.bodyType = RigidbodyType2D.Kinematic;
+                if (childRigidbody.gameObject != _marimoPa)
+                {
+                    childRigidbody.bodyType = RigidbodyType2D.Kinematic;
+                }
             }
             // Disable Collider for each child object in _marimoPa
             Collider2D[] childColliders = _marimoPa.GetComponentsInChildren<Collider2D>();
             foreach (Collider2D childCollider in childColliders)
             {
-                childCollider.enabled = false;
+                if (childCollider.gameObject != _marimoPa)
+                {
+                    childCollider.enabled = false;
+                }
             }
         }
     }
@@ -155,20 +164,26 @@ public class SyukuHands : MonoBehaviour
         {
             Debug.Log("キャッチC");
             _chaching = true;
-            _targetRig.bodyType = RigidbodyType2D.Kinematic;
+            //_targetRig.bodyType = RigidbodyType2D.Kinematic;
             _marimoScr.enabled = false;
 
             // プレイヤーとその子オブジェクトのRigidbodyType2Dを切り替える
             Rigidbody2D[] childRigidbodies = _marimoPa.GetComponentsInChildren<Rigidbody2D>();
             foreach (Rigidbody2D childRigidbody in childRigidbodies)
             {
-                childRigidbody.bodyType = RigidbodyType2D.Kinematic;
+                if (childRigidbody.gameObject != _marimoPa)
+                {
+                    childRigidbody.bodyType = RigidbodyType2D.Kinematic;
+                }
             }
             // Disable Collider for each child object in _marimoPa
             Collider2D[] childColliders = _marimoPa.GetComponentsInChildren<Collider2D>();
             foreach (Collider2D childCollider in childColliders)
             {
-                childCollider.enabled = false;
+                if (childCollider.gameObject != _marimoPa)
+                {
+                    childCollider.enabled = true;
+                }
             }
         }
     }

@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - AMAI
   - NORMAL
   - MAZUI
   - Florus
@@ -20,7 +19,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Odor
@@ -28,8 +27,8 @@ TagManager:
   - ground
   - mushroom
   - Destroyobj
-  - 
-  - 
+  - Player2
+  - SyukuBody
   - 
   - 
   - 

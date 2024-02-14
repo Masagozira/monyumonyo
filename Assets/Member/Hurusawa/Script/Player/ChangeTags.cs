@@ -12,7 +12,7 @@ public class ChangeTags : MonoBehaviour
     public float ChangeTime1 = 5.0f;  // タグ1に切り替えるまでの時間
     public float ChangeTime2 = 4.0f;  // タグ2に切り替えるまでの時間
     public float ChangeTime = 0.0f;  // 現在の切り替え中の経過時間
-    private float CooldownTime = 3.0f;  // 追加: クールダウン時間
+    private float CooldownTime = 2.0f;  // 追加: クールダウン時間
     private bool isInCooldown = false;  // 追加: クールダウン中かどうかのフラグ
 
     [SerializeField, Header("Tag切り替え中のエフェクト")]
@@ -29,6 +29,7 @@ public class ChangeTags : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
         if (rb != null)
         {
             rb.isKinematic = false;
@@ -42,7 +43,6 @@ public class ChangeTags : MonoBehaviour
         }
 
         Transform myTransform = GetComponent<Transform>();  // もしくは transform;
-        Cursor.visible = false;
 
         // ゲーム開始時に"Player"タグを持つオブジェクトを検索し、ログに表示
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
@@ -59,7 +59,7 @@ public class ChangeTags : MonoBehaviour
             foreach (Collider2D childCollider in childColliders)
             {
                 childCollider.isTrigger = false; // 例: トリガーを無効にする
-                                                 // Debug.Log("Child Collider found: " + childCollider.gameObject.name); // デバッグログを追加
+                // Debug.Log("Child Collider found: " + childCollider.gameObject.name); // デバッグログを追加
             }
             //Debug.Log(obj.gameObject.name);
         }
@@ -141,7 +141,7 @@ public class ChangeTags : MonoBehaviour
     // "Florus"タグに切り替えるメソッド
     private void SwitchTag1()
     {
-        this.tag = "Florus";
+        //this.tag = "Florus";
         ChangeChildTags("Florus");
         ChangeChildLayers("Default");
     }
@@ -149,7 +149,7 @@ public class ChangeTags : MonoBehaviour
     // "Odor"タグに切り替えるメソッド
     private void SwitchTag2()
     {
-        this.tag = "Odor";
+        //this.tag = "Odor";
         ChangeChildTags("Odor");
         ChangeChildLayers("Odor");
     }
@@ -178,7 +178,7 @@ public class ChangeTags : MonoBehaviour
     {
         istag1 = false;
         istag2 = false;
-        this.tag = "Player";
+        //this.tag = "Player";
         ChangeChildTags("Player");
         ChangeChildLayers("Default");
     }
