@@ -132,3 +132,5 @@ MonoBehaviour:
   _goalEff: {fileID: 8621487567712515620, guid: 16ed4d3ecb8579d4c8c5c10e79714efe, type: 3}
   _goalEff2: {fileID: 4494003969241557233, guid: 146e33dca8850bc47aab49b255ffeee7, type: 3}
   _isEffF: 0
+  Audio: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 7e4596570f963894e9b84af1b3e4df0b, type: 3}

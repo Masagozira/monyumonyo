@@ -38,9 +38,13 @@ public class StopMaru : MonoBehaviour
     private bool _playerDeath;
     private CircleCollider2D _playerCol;
 
+    //プレイヤー操作のスクリプト
+    private PlayerMovement _marimoScr;
+
     [SerializeField, Header("PlayerDieSE")]
     public AudioSource audioSource;
-    public AudioClip _deathSe;
+    public AudioClip _deathSe1;
+    public AudioClip _deathSe2;
 
     [SerializeField, Header("FadeInPanel")]
     private UnityEngine.UI.Image fadePanel;
@@ -58,6 +62,7 @@ public class StopMaru : MonoBehaviour
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
         _maruWalkAnim = GetComponent<Animator>();
+        _marimoScr = _player.GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -150,6 +155,7 @@ public class StopMaru : MonoBehaviour
             Debug.LogWarning("HitBody");
             _playerDeath = true;
             StartCoroutine(FadeOutAndPlaySE());
+            _marimoScr.enabled = false;
         }
 
         if (_playerDeath == false && collision.gameObject.CompareTag("Florus"))
@@ -157,6 +163,7 @@ public class StopMaru : MonoBehaviour
             Debug.LogWarning("HitBody");
             _playerDeath = true;
             StartCoroutine(FadeOutAndPlaySE());
+            _marimoScr.enabled = false;
         }
     }
 
@@ -166,10 +173,12 @@ public class StopMaru : MonoBehaviour
         StartCoroutine(FadeOut());
 
         // SEを再生
-        audioSource.PlayOneShot(_deathSe);
+        audioSource.PlayOneShot(_deathSe1);
+
+        audioSource.PlayOneShot(_deathSe2);
 
         // SEの再生が終わるまで待機
-        yield return new WaitForSeconds(_deathSe.length);
+        yield return new WaitForSeconds(_deathSe1.length);
 
         // シーン遷移
         SceneManager.LoadScene(gameOverScene);

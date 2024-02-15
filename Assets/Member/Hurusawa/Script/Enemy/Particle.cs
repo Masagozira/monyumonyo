@@ -12,7 +12,13 @@ public class Particle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("woll") && !isColliding)
+        if (collider.CompareTag("woll")  && !isColliding)
+        {
+            isColliding = true;
+            StartCoroutine(PlayParticleEffect());
+        }
+
+         if (collider.CompareTag("Destroyobj")  && !isColliding)
         {
             isColliding = true;
             StartCoroutine(PlayParticleEffect());

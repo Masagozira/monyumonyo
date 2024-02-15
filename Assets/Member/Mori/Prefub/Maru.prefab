@@ -52,13 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maruspeed: 2
-  _maruArea: 5
-  _angrySpeed: 5
+  _maruArea: 2
+  _angrySpeed: 4
   _playerHere: 0
   _playerFrontHere: 0
-  audioSource: {fileID: 2346989248387673380}
-  _deathSe: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
+  audioSource: {fileID: 0}
+  _deathSe1: {fileID: 8300000, guid: eca67e35c746d014581458e924f07e2c, type: 3}
+  _deathSe2: {fileID: 8300000, guid: 31fa5a8ac2bf0f347abfd7baca9d0788, type: 3}
   fadePanel: {fileID: 0}
+  gameOverScene: Gameover2
 --- !u!212 &1460503012902104586
 SpriteRenderer:
   m_ObjectHideFlags: 0

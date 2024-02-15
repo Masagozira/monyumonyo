@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     //SEを取得
     public AudioSource Audio;
-    public AudioClip JumpSE;
+    public AudioClip JumpSE1;
+    public AudioClip JumpSE2;
 
     void Start()
     {
@@ -79,7 +80,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             rb.AddForce(Vector2.up * currentJumpForce, ForceMode2D.Impulse);
-            Audio.PlayOneShot(JumpSE);
+            Audio.PlayOneShot(JumpSE1);
+            //Audio.PlayOneShot(JumpSE2);
         }
 
         wasGrounded = isGrounded;

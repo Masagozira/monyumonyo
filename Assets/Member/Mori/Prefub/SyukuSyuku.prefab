@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 4930219110662679928}
   - component: {fileID: 4930219110662679934}
   - component: {fileID: 4930219110662679933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: En_SyukuBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,9 +353,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0eb7628b2751c479f2e3b1f878517d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marimo: {fileID: 0}
-  Audio: {fileID: 6205980050682357962}
-  _deathSe: {fileID: 8300000, guid: 3c2fd3c07e0b33c4dbf6f362c64512ab, type: 3}
+  Audio: {fileID: 0}
+  _deathSe1: {fileID: 8300000, guid: eca67e35c746d014581458e924f07e2c, type: 3}
+  _deathSe2: {fileID: 8300000, guid: 31fa5a8ac2bf0f347abfd7baca9d0788, type: 3}
+  fadePanel: {fileID: 0}
+  gameOverScene: Gameover2
 --- !u!1 &4930219110863380814
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,9 +466,9 @@ MonoBehaviour:
   _armsCol: {fileID: 4930219110863380850}
   _leader: {fileID: 2798499206718368981}
   _isHandsMove: 0
-  _syuHandHeightRim: 10
-  _handSpeed: 30
-  _attractionSpeed: 3.2
+  _syuHandHeightRim: 15
+  _handSpeed: 2
+  _attractionSpeed: 3
 --- !u!61 &4930219110863380850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -555,4 +557,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _syukuHands: {fileID: 4930219110863380813}
-  _marimo: {fileID: 0}

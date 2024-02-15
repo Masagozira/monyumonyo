@@ -12,6 +12,9 @@ public class GoalEff : MonoBehaviour
     private GameObject _goalEff2;
     [SerializeField]
     private bool _isEffF = false;
+
+    public AudioSource Audio;
+    public AudioClip audioClip;
     private void Start()
     {
         _marimo = GameObject.Find("bone_11");
@@ -23,6 +26,7 @@ public class GoalEff : MonoBehaviour
         {
             if(!_isEffF)
             {
+                Audio.PlayOneShot(audioClip);
                 Instantiate(_goalEff, this.transform);
                 Instantiate(_goalEff2, this.transform);
                 _isEffF = true;

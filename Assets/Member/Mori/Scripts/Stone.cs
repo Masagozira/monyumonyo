@@ -29,16 +29,18 @@ public class Stone : MonoBehaviour
         {
             _canMove = false;
             _isPlayer = true;
-            _rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            _rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rig.constraints = RigidbodyConstraints2D.FreezePositionX;
             return;
         }
+
 
         //_stoVec += new Vector2(0.1f, 0);
         //this.transform.position = _stoVec;
 
         if (_canMove==true&&_isPlayer==false)
         {
-            _stoVec.x += 0.1f;
+            _stoVec.x += 0.2f;
             this.transform.position = _stoVec;
         }
     }
@@ -51,6 +53,7 @@ public class Stone : MonoBehaviour
                 | RigidbodyConstraints2D.FreezePositionX
                 | RigidbodyConstraints2D.FreezeRotation;
         }
+
     }
     private void Update()
     {

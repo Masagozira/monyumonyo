@@ -256,6 +256,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30.117645, y: 0.93231875}
   m_EdgeRadius: 0
+--- !u!82 &38089974 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6205980050682357962, guid: acb1891edcc92f94a98aacecb274df8e, type: 3}
+  m_PrefabInstance: {fileID: 669959505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410402769
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +756,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.04745123
       objectReference: {fileID: 0}
+    - target: {fileID: 8133867104273958719, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 38089974}
     - target: {fileID: 8133867104273958722, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -798,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 8133867104273958729, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: m_Name
       value: Cha_MonyuSmile1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133867104273958729, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8133867104629883176, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -979,6 +992,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.053727563
       objectReference: {fileID: 0}
+    - target: {fileID: 8133867105188860606, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 38089974}
     - target: {fileID: 8133867105188860606, guid: 164035083c28f9547b07747b9a8a4f22, type: 3}
       propertyPath: JumpUpPoint
       value: 3

@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NORMAL
-  - MAZUI
   - Florus
   - Odor
   - ground
@@ -15,6 +13,7 @@ TagManager:
   - woll
   - Destroyobj
   - Stone
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -29,7 +28,7 @@ TagManager:
   - Destroyobj
   - Player2
   - SyukuBody
-  - 
+  - Gameover
   - 
   - 
   - 

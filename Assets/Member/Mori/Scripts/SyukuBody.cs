@@ -10,7 +10,8 @@ public class SyukuBody : MonoBehaviour
     private bool _playerDeath;
     [SerializeField, Header("�v���C���[�����ʂƂ���SE")]
     public AudioSource Audio;
-    public AudioClip _deathSe;
+    public AudioClip _deathSe1;
+    public AudioClip _deathSe2;
     AudioSource audioSource;
 
     [SerializeField, Header("フェードアウト用のパネル")]
@@ -56,10 +57,11 @@ public class SyukuBody : MonoBehaviour
         yield return StartCoroutine(FadeOut());
 
         // SEを再生
-        Audio.PlayOneShot(_deathSe);
+        Audio.PlayOneShot(_deathSe1);
+        Audio.PlayOneShot(_deathSe2);
 
         // SEの再生が終わるまで待機
-        yield return new WaitForSeconds(_deathSe.length);
+        yield return new WaitForSeconds(_deathSe1.length);
 
         // シーン遷移
         SceneManager.LoadScene(gameOverScene);
@@ -68,7 +70,7 @@ public class SyukuBody : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.3f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);

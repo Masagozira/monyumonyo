@@ -11,6 +11,10 @@ public class Gameover : MonoBehaviour
 
     public string gameClearScene = "Gameover1";
 
+    [SerializeField, Header("SE")]
+    public AudioSource Audio;
+    public AudioClip audioClip;
+
     void Start()
     {
         Cursor.visible = false;
@@ -22,6 +26,12 @@ public class Gameover : MonoBehaviour
         {
             StartCoroutine(FadeOut());
         }
+
+        if (other.CompareTag("Player2"))
+        {
+            Audio.PlayOneShot(audioClip);
+        }
+        
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);

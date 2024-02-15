@@ -38,9 +38,13 @@ public class Maru : MonoBehaviour
     private bool _playerDeath;
     private CircleCollider2D _playerCol;
 
+    //プレイヤー操作のスクリプト
+    private PlayerMovement _marimoScr;
+
     [SerializeField, Header("プレイヤーが死ぬときのSE")]
     public AudioSource audioSource;
-    public AudioClip _deathSe;
+     public AudioClip _deathSe1;
+    public AudioClip _deathSe2;
 
     [SerializeField, Header("フェードアウト用のパネル")]
     private UnityEngine.UI.Image fadePanel;
@@ -58,6 +62,8 @@ public class Maru : MonoBehaviour
         _playerCol = _player.GetComponent<CircleCollider2D>();
         _playerDeath = false;
         _maruWalkAnim = GetComponent<Animator>();
+        _marimoScr = _player.GetComponent<PlayerMovement>();
+        
     }
 
     private void Update()
@@ -154,6 +160,7 @@ public class Maru : MonoBehaviour
             Debug.LogWarning("HitBody");
             _playerDeath = true;
             StartCoroutine(FadeOutAndPlaySE());
+              _marimoScr.enabled = false;
         }
 
         if (_playerDeath == false && collision.gameObject.CompareTag("Florus"))
@@ -161,6 +168,7 @@ public class Maru : MonoBehaviour
             Debug.LogWarning("HitBody");
             _playerDeath = true;
             StartCoroutine(FadeOutAndPlaySE());
+              _marimoScr.enabled = false;
         }
     }
 
@@ -170,10 +178,11 @@ public class Maru : MonoBehaviour
         StartCoroutine(FadeOut());
 
         // SEを再生
-        audioSource.PlayOneShot(_deathSe);
+        audioSource.PlayOneShot(_deathSe1);
+        audioSource.PlayOneShot(_deathSe2);
 
         // SEの再生が終わるまで待機
-        yield return new WaitForSeconds(_deathSe.length);
+        yield return new WaitForSeconds(_deathSe1.length);
 
         // シーン遷移
         SceneManager.LoadScene(gameOverScene);
@@ -182,7 +191,7 @@ public class Maru : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.3f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);

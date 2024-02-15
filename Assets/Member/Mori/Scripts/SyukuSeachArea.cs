@@ -1,13 +1,13 @@
 using UnityEngine;
 /// <summary>
-/// õ“G”ÍˆÍ‚ÌBoolŠÇ—
+/// ï¿½ï¿½ï¿½Gï¿½ÍˆÍ‚ï¿½Boolï¿½Ç—ï¿½
 /// </summary>
 public class SyukuSeachArea : MonoBehaviour
 {
-    //‚¤‚ÅƒXƒNƒŠƒvƒgæ“¾
+    //ï¿½ï¿½ï¿½ÅƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½æ“¾
     [SerializeField]
     private SyukuHands _syukuHands;
-    //ƒvƒŒƒCƒ„[‚ÌƒRƒ‰ƒCƒ_[æ“¾A¯•Ê—p
+    //ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌƒRï¿½ï¿½ï¿½Cï¿½_ï¿½[ï¿½æ“¾ï¿½Aï¿½ï¿½ï¿½Ê—p
     private CircleCollider2D _marimoC;
     private GameObject _marimoG;
 
@@ -18,10 +18,10 @@ public class SyukuSeachArea : MonoBehaviour
     }
 
     /// <summary>
-    /// õ“G”ÍˆÍ“à‚É“ü‚Á‚½
+    /// ï¿½ï¿½ï¿½Gï¿½ÍˆÍ“ï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision ==_marimoC)
         {
@@ -30,7 +30,7 @@ public class SyukuSeachArea : MonoBehaviour
 
     }
     /// <summary>
-    /// õ“G”ÍˆÍ“à‚©‚ço‚½
+    /// ï¿½ï¿½ï¿½Gï¿½ÍˆÍ“ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)

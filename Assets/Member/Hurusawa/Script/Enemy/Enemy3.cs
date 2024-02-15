@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Enemy3 : MonoBehaviour
 {
+
+    // PlayerGameobject
+    public GameObject _player;
     // 敵の移動関連
     [SerializeField, Header("敵3の移動関係")]
     private bool isEnemyMove = false;
@@ -30,6 +33,9 @@ public class Enemy3 : MonoBehaviour
     [SerializeField, Header("ぶつかったときに消すobject")]
     // 障害物
     public GameObject Destroyobj;
+
+    //プレイヤー操作のスクリプト
+    private PlayerMovement _marimoScr;
 
 
     [SerializeField, Header("障害物にぶつかったときのアニメーションとエフェクト")]
@@ -56,7 +62,9 @@ public class Enemy3 : MonoBehaviour
 
     void Start()
     {
+        _player = GameObject.Find("bone_11");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _marimoScr = _player.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -83,6 +91,7 @@ public class Enemy3 : MonoBehaviour
                                                    || collision.gameObject.tag == "Player")
             {
                 StartCoroutine(FadeOutAndPlaySE());
+                _marimoScr.enabled = false;
             }
         }
 
@@ -91,6 +100,12 @@ public class Enemy3 : MonoBehaviour
         {
             audioSource.PlayOneShot(_deathSe);
             Destroy(collision.gameObject, 1f);
+        }
+
+        if (collision.gameObject.tag == "Destroyobj")
+        {
+            audioSource.PlayOneShot(_deathSe);
+            Destroy(collision.gameObject, 1.5f);
         }
 
         // 衝突したオブジェクトが特定のタグを持っている場合にObstacleobjとエフェクトを3秒後に削除
@@ -187,7 +202,7 @@ public class Enemy3 : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        float fadeTime = 1.5f;
+        float fadeTime = 1.2f;
 
         Color originalColor = fadePanel.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
@@ -206,7 +221,7 @@ public class Enemy3 : MonoBehaviour
     private IEnumerator FadeOut2()
     {
         float elapsedTime2 = 0f;
-        float fadeTime2 = 1.5f;
+        float fadeTime2 = 1.1f;
 
         Color originalColor = spriteRenderer.color;
         Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
