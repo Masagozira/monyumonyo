@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChangeTags : MonoBehaviour
 {
+    private PlayerInput _playerInput;
 
     [SerializeField, Header("Tag関係")]
     // タグ切り替え中の時間
@@ -29,6 +31,7 @@ public class ChangeTags : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _playerInput = GetComponent<PlayerInput>();
         
         if (rb != null)
         {
@@ -96,7 +99,7 @@ public class ChangeTags : MonoBehaviour
         }
 
         // "Florus"タグに切り替える条件
-        if (!istag1 && Input.GetKeyDown(KeyCode.W))
+        if (!istag1 && _playerInput.actions["Florus"].triggered)
         {
             Audio.PlayOneShot(FloruSE);
             SwitchTag1();
@@ -106,7 +109,7 @@ public class ChangeTags : MonoBehaviour
         }
 
         // "Odor"タグに切り替える条件
-        if (!istag2 && Input.GetKeyDown(KeyCode.S))
+        if (!istag2 && _playerInput.actions["Odor"].triggered)
         {
             Audio.PlayOneShot(OdorSE);
             SwitchTag2();

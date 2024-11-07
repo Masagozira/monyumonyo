@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerInput _playerInput;
+
     // 移動速度
     public float moveSpeed = 5.0f;
 
@@ -38,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -67,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement;
 
         // ジャンプ時の処理
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (_playerInput.actions["Jump"].triggered && isGrounded)
         {
             ChangeSprite();
             float currentJumpForce = jumpForce;
