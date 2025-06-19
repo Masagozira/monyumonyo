@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hitDestroyobj = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, DestroyobjLayer);
 
         // デバッグログ+スプライトの変更
-        if (hitGround.collider != null  ||hitMushroom.collider != null || hitDestroyobj.collider != null)
+        if (hitGround.collider != null || hitMushroom.collider != null || hitDestroyobj.collider != null)
         {
             if (!wasGrounded)
             {
@@ -74,23 +74,28 @@ public class PlayerMovement : MonoBehaviour
         // ジャンプ時の処理
         if (_playerInput.actions["Jump"].triggered && isGrounded)
         {
-            ChangeSprite();
-            float currentJumpForce = jumpForce;
-
-            if (hitMushroom.collider != null)
-            {
-                if (gameObject.layer == LayerMask.NameToLayer("Odor"))
-                {
-                    currentJumpForce *= JumpUpPoint;
-                }
-            }
-            rb.AddForce(Vector2.up * currentJumpForce, ForceMode2D.Impulse);
-            Audio.PlayOneShot(JumpSE1);
-            //Audio.PlayOneShot(JumpSE2);
+            HandleJump();
         }
 
         wasGrounded = isGrounded;
     }
+
+    void HandleJump()
+    {
+        ChangeSprite();
+        float currentJumpForce = jumpForce;
+
+        RaycastHit2D hitMushroom = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, mushroomLayer);
+
+        if (hitMushroom.collider != null && gameObject.layer == LayerMask.NameToLayer("Odor"))
+        {
+            currentJumpForce *= JumpUpPoint;
+        }
+        rb.AddForce(Vector2.up * currentJumpForce, ForceMode2D.Impulse);
+
+        Audio.PlayOneShot(JumpSE1);
+    }
+
 
     // スプライトを切り替える
     void ChangeSprite()

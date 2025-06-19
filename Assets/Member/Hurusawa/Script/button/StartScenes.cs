@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class StartScenes : MonoBehaviour
 {
+    [SerializeField] public PlayerInput _playerInput;
     public AudioClip sound;
     public AudioSource Audio;
+
 
     void Start()
     {
         Cursor.visible = false;
+
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_playerInput.actions["Decision"].triggered)
         {
             Audio.PlayOneShot(sound);
 

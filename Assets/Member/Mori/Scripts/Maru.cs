@@ -14,14 +14,14 @@ public class Maru : MonoBehaviour
 
     // 通常歩行範囲
     [SerializeField, Header("通常時の歩行範囲")]
-    private float _maruArea = 5;
+    private float _maruArea = 2;
 
     // 歩行用、増加させて_maruAreaの値になったら引き返す
     private float _maruAreaAdd = 0;
 
     // 追いかけるスピード
     [SerializeField, Header("プレイヤー発見時の歩行スピード")]
-    private float _angrySpeed = 5f;
+    private float _angrySpeed = 3.5f;
 
     // プレイヤーが索敵範囲内にいるか：全体
     [Header("索敵範囲内にプレイヤーがいるか、居る：true")]
@@ -122,7 +122,7 @@ public class Maru : MonoBehaviour
         Debug.Log("Case2:NotFind");
         _maruWalkAnim.SetBool("Run", false);
         // 基本歩行
-        _maruAreaAdd += Time.deltaTime * 1.4f;
+        _maruAreaAdd += Time.deltaTime * 1.2f;
 
         // 変数が一定値に達したらリセット、向き反転
         if (_maruAreaAdd >= _maruArea)
@@ -146,7 +146,8 @@ public class Maru : MonoBehaviour
 
         // 歩き続ける
         transform.position = new Vector3(
-            transform.position.x + _maruspeed * Time.fixedDeltaTime * _direction,
+            //transform.position.x + _maruspeed * Time.fixedDeltaTime * _direction,
+            transform.position.x + _maruspeed * Time.deltaTime * _direction,
             this.transform.position.y,
             0);
     }

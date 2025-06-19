@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ChangeTags : MonoBehaviour
 {
-    private PlayerInput _playerInput;
+    [SerializeField] public InputActions _playerInput;
 
     [SerializeField, Header("Tag関係")]
     // タグ切り替え中の時間
@@ -31,7 +31,9 @@ public class ChangeTags : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        _playerInput = GetComponent<PlayerInput>();
+
+        _playerInput = new InputActions();
+        _playerInput.Enable();
         
         if (rb != null)
         {
@@ -99,7 +101,7 @@ public class ChangeTags : MonoBehaviour
         }
 
         // "Florus"タグに切り替える条件
-        if (!istag1 && _playerInput.actions["Florus"].triggered)
+        if (!istag1 && _playerInput.Player.Florus.triggered)
         {
             Audio.PlayOneShot(FloruSE);
             SwitchTag1();
@@ -109,7 +111,7 @@ public class ChangeTags : MonoBehaviour
         }
 
         // "Odor"タグに切り替える条件
-        if (!istag2 && _playerInput.actions["Odor"].triggered)
+        if (!istag2 && _playerInput.Player.Odor.triggered)
         {
             Audio.PlayOneShot(OdorSE);
             SwitchTag2();
@@ -163,16 +165,18 @@ public class ChangeTags : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.gameObject.tag = newTag;
-            // Debug.Log(child.gameObject.name);
+            Debug.Log($"{child.gameObject.name}のタグに変更しました");
         }
     }
 
     private void ChangeChildLayers(string newLayerName)
     {
         int newLayer = LayerMask.NameToLayer(newLayerName);
+
         foreach (Transform child in transform)
         {
             child.gameObject.layer = newLayer;
+             Debug.Log($"{child.gameObject.name}のレイヤーに変更しました");
         }
     }
 
@@ -184,6 +188,8 @@ public class ChangeTags : MonoBehaviour
         //this.tag = "Player";
         ChangeChildTags("Player");
         ChangeChildLayers("Default");
+
+         Debug.Log("タグとレイヤーを元に戻しました（Player / Default）");
     }
 
     void GetLayersRecursive(Transform parent)

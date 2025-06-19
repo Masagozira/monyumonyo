@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 匂い変更エフェクトの管理スクリプト
@@ -28,6 +29,9 @@ public class PlayerEffect : MonoBehaviour
     [SerializeField, Header("まずい匂い効果時間")]
     private float _OdrEffectTime = 3f;
 
+    [SerializeField]
+    private PlayerInput _playerinput;
+
     // エフェクト時間管理
     private bool istag1 = false;  //プレイヤータグが"Florus"のときtrue
     private bool istag2 = false;  //プレイヤータグが"Odor"のときtrue
@@ -42,6 +46,9 @@ public class PlayerEffect : MonoBehaviour
     //初期設定
     private void Start()
     {
+
+        _playerinput = GetComponent<PlayerInput>();
+
         //匂い系のコンポーネントの代入
         _florusEffectTime = _florusEffect.main;
         _odorEffectTime = _odorEffect.main;
@@ -69,7 +76,7 @@ public class PlayerEffect : MonoBehaviour
         if (isInCooldown)
         {
             NonChangeTime += Time.deltaTime;
-            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)) && NonChangeTime >= NonCooldownTime)
+            if ((_playerinput.actions["Florus"].triggered || _playerinput.actions["Odor"].triggered) && NonChangeTime >= NonCooldownTime)
             {
                 NonChangeTime = 0.0f;
                 FailEffect();
@@ -90,7 +97,7 @@ public class PlayerEffect : MonoBehaviour
             return;
         }
         // "Florus"に切り替える
-        if (!istag1 && Input.GetKeyDown(KeyCode.W))
+        if (!istag1 && _playerinput.actions["Florus"].triggered)
         {
             FloEffect();
             istag1 = true;
@@ -98,7 +105,7 @@ public class PlayerEffect : MonoBehaviour
             Debug.Log("Florus");
         }
         // "Odor"に切り替える
-        if (!istag2 && Input.GetKeyDown(KeyCode.S))
+        if (!istag2 && _playerinput.actions["Odor"].triggered)
         {
             OdrEffect();
             istag2 = true;

@@ -4,35 +4,62 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class buttonImage :MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class buttonImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Image image;
-    [SerializeField] public Sprite normalSprite; // ボタンの通常時の画像
-    [SerializeField]public Sprite hoverSprite;  // マウスが乗ったときの画像
+    [SerializeField] public Sprite normalSprite;
+    [SerializeField] public Sprite hoverSprite;
 
-    // 初期化時に呼ばれるメソッド
+    [SerializeField] public ButtonSelection buttonSelection;
+
+    private Button thisButton;
+    private bool isMouseHover = false;
+
     void Start()
     {
         Cursor.visible = true;
-        
-        // Imageコンポーネントを取得
-        image = GetComponent<Image>();
 
-        // ボタンの通常時の画像を設定
+        image = GetComponent<Image>();
         image.sprite = normalSprite;
+
+        thisButton = GetComponent<Button>();
     }
 
-    // マウスポインターがボタンに乗ったときの処理
+    void Update()
+    {
+        if (isMouseHover) return;// マウスが乗っているときは処理しない
+
+            if (buttonSelection != null && thisButton != null)
+            {
+                if (buttonSelection.GetCurrentButton() == thisButton)
+                {
+                    image.sprite = hoverSprite;
+                }
+                else
+                {
+                    image.sprite = normalSprite;
+                }
+            }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // ボタンの画像を変更する
+        isMouseHover = true;
         image.sprite = hoverSprite;
     }
 
-    // マウスポインターがボタンから離れたときの処理
     public void OnPointerExit(PointerEventData eventData)
     {
-        // ボタンの画像を元に戻す
-        image.sprite = normalSprite;
+        isMouseHover = false;
+        // ボタン選択中かどうかでスプライトを変える
+        if (buttonSelection != null && thisButton != null &&
+            buttonSelection.GetCurrentButton() == thisButton)
+        {
+            image.sprite = hoverSprite;
+        }
+        else
+        {
+            image.sprite = normalSprite;
+        }
     }
 }

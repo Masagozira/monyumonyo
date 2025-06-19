@@ -8,7 +8,8 @@ public class SyukuBody : MonoBehaviour
     private GameObject _marimo;
     private CircleCollider2D _marimoCol;
     private bool _playerDeath;
-    [SerializeField, Header("�v���C���[�����ʂƂ���SE")]
+    
+    [SerializeField, Header("プレイヤーが触れたときのSE")]
     public AudioSource Audio;
     public AudioClip _deathSe1;
     public AudioClip _deathSe2;
@@ -31,7 +32,7 @@ public class SyukuBody : MonoBehaviour
     }
 
     /// <summary>
-    /// �v���C���[������������
+    /// プレイヤーが触れたときに処理
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,11 +40,9 @@ public class SyukuBody : MonoBehaviour
         if (_playerDeath == false && collision.collider == _marimoCol)
         {
             _playerDeath = true;
-            //Audio.PlayOneShot(_deathSe);
-           // Invoke("ReDeath", 10f);
+            // SE再生とフェード処理を実行
             StartCoroutine(FadeOutAndPlaySE());
         }
-
     }
 
     private void ReDeath()
@@ -60,7 +59,7 @@ public class SyukuBody : MonoBehaviour
         Audio.PlayOneShot(_deathSe1);
         Audio.PlayOneShot(_deathSe2);
 
-        // SEの再生が終わるまで待機
+        // SEの再生が終わるまで待機（_deathSe1の長さ）
         yield return new WaitForSeconds(_deathSe1.length);
 
         // シーン遷移
