@@ -395,13 +395,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _armsTra: {fileID: 7869371203044642960}
   _armsCol: {fileID: 7869371203044642963}
-  _marimo: {fileID: 0}
-  _marimoPa: {fileID: 0}
   _leader: {fileID: 1119271437179919668}
   _isHandsMove: 0
   _syuHandHeightRim: 15
-  _handSpeed: 1.65
-  _attractionSpeed: 1.25
+  _handSpeed: 0.75
+  _attractionSpeed: 1.15
 --- !u!61 &7869371203044642963
 BoxCollider2D:
   m_ObjectHideFlags: 0
