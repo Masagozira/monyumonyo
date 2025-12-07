@@ -10,7 +10,7 @@ public class buttonImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] public Sprite normalSprite;
     [SerializeField] public Sprite hoverSprite;
 
-    [SerializeField] public ButtonSelection buttonSelection;
+    [SerializeField] public UpDownButtonSelection buttonSelection;
 
     private Button thisButton;
     private bool isMouseHover = false;

@@ -3,100 +3,117 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 匂い変更エフェクトの管理スクリプト
-/// 各関数呼び出しで動作する
-/// いい匂いのエフェクト：FloEffect();
-/// まずい匂いのエフェクト：OdrEffect();
-/// 匂いのエフェクト変更失敗：FailEffect();
+/// プレイヤーのタグ変更エフェクト管理スクリプト
+/// 以下の関数を呼び出すことでエフェクトが再生される:
+/// ・Florus：FloEffect()
+/// ・Odor：OdrEffect()
+/// ・失敗エフェクト：FailEffect()
 /// </summary>
 public class PlayerEffect : MonoBehaviour
 {
-    //いい匂いのエフェクト
-    [SerializeField, Header("いい匂いのエフェクト")]
+    // -------------------------
+    // エフェクト管理
+    // -------------------------
+
+    [SerializeField, Header("Florusエフェクト")]
     private ParticleSystem _florusEffect;
     private ParticleSystem.MainModule _florusEffectTime;
-    //まずい匂いのエフェクト
-    [SerializeField, Header("まずい匂いのエフェクト")]
+
+    [SerializeField, Header("Odorエフェクト")]
     private ParticleSystem _odorEffect;
     private ParticleSystem.MainModule _odorEffectTime;
-    //匂いのエフェクト変更失敗
-    [SerializeField, Header("匂いの変更失敗エフェクト")]
+
+    [SerializeField, Header("タグ失敗時エフェクト")]
     private ParticleSystem _failEffect;
     private ParticleSystem.MainModule _failEffectTime;
 
-    [SerializeField, Header("いい匂い効果時間")]
+    [SerializeField, Header("Florus効果時間")]
     private float _floEffectTime = 4f;
-    [SerializeField, Header("まずい匂い効果時間")]
+
+    [SerializeField, Header("Odor効果時間")]
     private float _OdrEffectTime = 3f;
 
     [SerializeField]
     private PlayerInput _playerinput;
 
-    // エフェクト時間管理
-    private bool istag1 = false;  //プレイヤータグが"Florus"のときtrue
-    private bool istag2 = false;  //プレイヤータグが"Odor"のときtrue
-    public float ChangeTime1 = 4f;  // いい匂い効果時間
-    public float ChangeTime2 = 3f;  // まずい匂い効果時間
-    public float ChangeTime = 0.0f;  // 時間計測用
-    private float CooldownTime = 2f;  // エフェクト切り替えのクールタイム
-    public float NonChangeTime = 0.0f;  // 時間計測用
-    private float NonCooldownTime = 0f;  // エフェクト切り替えのクールタイム
-    private bool isInCooldown = false;  // 今クールタイム中かどうか
+    // -------------------------
+    //  タグ変更・クールダウン管理
+    // -------------------------
 
-    //初期設定
+    private bool istag1 = false; // タグが"Florus"なら true
+    private bool istag2 = false; // タグが"Odor"なら true
+
+    public float ChangeTime1 = 4f;  // Florus継続時間
+    public float ChangeTime2 = 3f;  // Odor継続時間
+    public float ChangeTime = 0.0f; // 経過時間計測
+
+    private float CooldownTime = 2f; // エフェクト切替後のクールダウン
+    public float NonChangeTime = 0.0f;
+    private float NonCooldownTime = 0f;
+
+    private bool isInCooldown = false; // クールダウン中かどうか
+
     private void Start()
     {
-
         _playerinput = GetComponent<PlayerInput>();
 
-        //匂い系のコンポーネントの代入
+        // パーティクル設定
         _florusEffectTime = _florusEffect.main;
         _odorEffectTime = _odorEffect.main;
         _failEffectTime = _failEffect.main;
 
-        //匂い系の効果時間変数の代入
+        // エフェクト時間を設定
         _florusEffectTime.duration = _floEffectTime;
         _odorEffectTime.duration = _OdrEffectTime;
         _failEffectTime.duration = 1;
 
         Cursor.visible = false;
-        // プレイヤー検索
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject obj in objs)
-        {
-            //Debug.Log(obj.gameObject.name);
-        }
-        Transform parentTransform = transform; // プレイヤーを親に設定
+
+        // 子オブジェクトのレイヤー調査（デバッグ）
+        Transform parentTransform = transform;
         GetLayersRecursiveEff(parentTransform);
     }
 
-    //エフェクト発生処理
     private void Update()
     {
+        if (Menu.IsMenuActive) return;
+
+        // -----------------
+        // クールダウン中
+        // -----------------
         if (isInCooldown)
         {
             NonChangeTime += Time.deltaTime;
-            if ((_playerinput.actions["Florus"].triggered || _playerinput.actions["Odor"].triggered) && NonChangeTime >= NonCooldownTime)
+
+            if ((_playerinput.actions["Florus"].triggered ||
+                 _playerinput.actions["Odor"].triggered) 
+                && NonChangeTime >= NonCooldownTime)
             {
                 NonChangeTime = 0.0f;
                 FailEffect();
             }
-            // クールタイム中は返す
             return;
         }
-        // 何らかの匂いがあるとき
+
+        // -----------------
+        // 効果時間中
+        // -----------------
         if (istag1 || istag2)
         {
             ChangeTime += Time.deltaTime;
-            // 指定した匂いの秒数経過した時
+
+            // 効果時間終了
             if (ChangeTime >= (istag1 ? ChangeTime1 : ChangeTime2))
             {
-                EndChangeTagEff();  //タグboolをfalseにする
-                StartCooldownEff();  // クールタイム開始
+                EndChangeTagEff();
+                StartCooldownEff();
             }
             return;
         }
-        // "Florus"に切り替える
+
+        // -----------------
+        // Florus への変更
+        // -----------------
         if (!istag1 && _playerinput.actions["Florus"].triggered)
         {
             FloEffect();
@@ -104,7 +121,10 @@ public class PlayerEffect : MonoBehaviour
             ChangeTime = 0.0f;
             Debug.Log("Florus");
         }
-        // "Odor"に切り替える
+
+        // -----------------
+        // Odor への変更
+        // -----------------
         if (!istag2 && _playerinput.actions["Odor"].triggered)
         {
             OdrEffect();
@@ -119,80 +139,69 @@ public class PlayerEffect : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// いい匂い
-    /// </summary>
+    /// <summary>Florusエフェクト</summary>
     public void FloEffect()
     {
-        Vector3 playerPosition;
-        // プレイヤー位置取得
-        playerPosition = transform.position;
+        Vector3 pos = transform.position;
 
-        // いい匂いインスタンス
-        ParticleSystem floEffectInstance = Instantiate(_florusEffect, playerPosition, Quaternion.identity, transform);
+        Instantiate(_florusEffect, pos, Quaternion.identity, transform);
+
         Debug.Log("Effect:Flo");
-        //Instantiate(_florusEffect, transform);
+
         _florusEffect.Play();
         _florusEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-
     }
-    /// <summary>
-    /// まずい匂い
-    /// </summary>
+
+    /// <summary>Odorエフェクト</summary>
     public void OdrEffect()
     {
-        Vector3 playerPosition;
-        // プレイヤー位置取得
-        playerPosition = transform.position;
-        // まずい匂いインスタンス
-        ParticleSystem floEffectInstance = Instantiate(_odorEffect, playerPosition, Quaternion.identity, transform);
+        Vector3 pos = transform.position;
+
+        Instantiate(_odorEffect, pos, Quaternion.identity, transform);
 
         Debug.Log("Effect:Odr");
-        //Instantiate(_odorEffect, transform);
+
         _odorEffect.Play();
         _odorEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
-    /// <summary>
-    /// 匂い切り替え失敗
-    /// </summary>
+    /// <summary>失敗エフェクト</summary>
     public void FailEffect()
     {
-        Vector3 playerPosition;
-        // プレイヤー位置取得
-        playerPosition = transform.position;
+        Vector3 pos = transform.position;
 
-        // 失敗エフェクトインスタンス
-        ParticleSystem floEffectInstance = Instantiate(_failEffect, playerPosition, Quaternion.identity, transform);
+        Instantiate(_failEffect, pos, Quaternion.identity, transform);
 
         Debug.Log("Effect:Non");
-        //Instantiate(_failEffect, transform);
+
         _failEffect.Play();
         _failEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
+
+    /// <summary>子オブジェクトのレイヤー出力（デバッグ）</summary>
     void GetLayersRecursiveEff(Transform parent)
     {
         foreach (Transform child in parent)
         {
-            // 子オブジェクトのレイヤー取得
-            int layer = child.gameObject.layer;
-            Debug.Log(child.name + " のレイヤー： " + LayerMask.LayerToName(layer));
-
+            Debug.Log(child.name + " のレイヤー: " + LayerMask.LayerToName(child.gameObject.layer));
             GetLayersRecursiveEff(child);
         }
     }
-    // タグリセット
+
+    /// <summary>タグ状態をリセット</summary>
     void EndChangeTagEff()
     {
         istag1 = false;
         istag2 = false;
     }
-    // エフェクトクールダウン開始
+
+    /// <summary>クールダウン開始</summary>
     void StartCooldownEff()
     {
         StartCoroutine(CooldownCoroutineEff());
     }
-    // エフェクトクールダウン
+
+    /// <summary>クールダウン処理</summary>
     IEnumerator CooldownCoroutineEff()
     {
         isInCooldown = true;

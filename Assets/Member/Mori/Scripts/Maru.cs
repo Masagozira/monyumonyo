@@ -68,6 +68,9 @@ public class Maru : MonoBehaviour
 
     private void Update()
     {
+
+        if (Menu.IsMenuActive) return;
+
         // プレイヤーが索敵範囲内に存在してたら追いかける
         // ・美味しそうな匂いかつ索敵範囲内
         // ・通常時かつ前方索敵範囲内

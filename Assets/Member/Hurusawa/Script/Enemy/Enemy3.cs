@@ -69,6 +69,9 @@ public class Enemy3 : MonoBehaviour
 
     void Update()
     {
+
+        if (Menu.IsMenuActive) return;
+
         if (isEnemyMove)
         {
             EnemyMove();

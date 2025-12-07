@@ -641,7 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 21300000, guid: 28c3d692c9b41704583e8a96c27d31f8, type: 3}
   hoverSprite: {fileID: 21300000, guid: 05e7974744f872744a69450691147ecd, type: 3}
-  buttonSelection: {fileID: 503017434}
+  buttonSelection: {fileID: 0}
 --- !u!1 &237770305
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 21300000, guid: 28c3d692c9b41704583e8a96c27d31f8, type: 3}
   hoverSprite: {fileID: 21300000, guid: 05e7974744f872744a69450691147ecd, type: 3}
-  buttonSelection: {fileID: 503017434}
+  buttonSelection: {fileID: 0}
 --- !u!1 &503017433
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503017435}
-  - component: {fileID: 503017434}
+  - component: {fileID: 503017436}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -960,26 +960,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &503017434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503017433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81caae59d56b2554faecee372399ec81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 163971820}
-  - {fileID: 454872788}
-  - {fileID: 530333402}
-  selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
-  defaultTextColor: {r: 0, g: 0, b: 0, a: 1}
-  selectedAlpha: 1
-  defauletAlpha: 1
 --- !u!4 &503017435
 Transform:
   m_ObjectHideFlags: 0
@@ -995,6 +975,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503017436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503017433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c8abebeb9bbac4aaf88afc7bf50ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 163971820}
+  - {fileID: 454872788}
+  - {fileID: 530333402}
+  selectedTextColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultTextColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  selectedAlpha: 1
+  defauletAlpha: 0.5
 --- !u!1 &530333400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 21300000, guid: 28c3d692c9b41704583e8a96c27d31f8, type: 3}
   hoverSprite: {fileID: 21300000, guid: 05e7974744f872744a69450691147ecd, type: 3}
-  buttonSelection: {fileID: 503017434}
+  buttonSelection: {fileID: 0}
 --- !u!1 &712082003
 GameObject:
   m_ObjectHideFlags: 0

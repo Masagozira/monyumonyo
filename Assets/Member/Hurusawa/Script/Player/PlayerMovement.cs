@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // メニューが開いているなら操作無効
+        if (Menu.IsMenuActive) return;
+
+
         // レイキャストを使用して地面とキノコの判定を取得
         RaycastHit2D hitGround = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer);
         RaycastHit2D hitMushroom = Physics2D.Raycast(transform.position, Vector2.down, rayDistance, mushroomLayer);
@@ -64,8 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
         // 地面またはキノコに接地しているか判定
         isGrounded = hitGround.collider != null || hitMushroom.collider != null || hitDestroyobj.collider != null;
-
-
         // 左右の移動
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);

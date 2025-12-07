@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class ButtonSelection : MonoBehaviour
+public class UpDownButtonSelection : MonoBehaviour
 {
     public Button[] buttons; // UIボタンの配列
     private int currentButtonIndex = 0;

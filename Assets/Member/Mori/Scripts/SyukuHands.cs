@@ -27,6 +27,8 @@ public class SyukuHands : MonoBehaviour
     //腕が動く条件にあるか
     [Header("索敵範囲内にプレイヤーがいるか、居る：true")]
     public bool _isHandsMove = false;
+    private bool _isChasing = false;
+
     //腕を伸ばす(スプライトを伸ばす)ためのSpriteRenderer取得
     private SpriteRenderer _syuSpr;
     //腕をどれくらいのばすか
@@ -71,11 +73,13 @@ public class SyukuHands : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (Menu.IsMenuActive) return;
+
+
         //いい匂いで、索敵範囲内で、掴まれていない時
         if (_marimo.gameObject.tag == "Florus" && _isHandsMove == true && _chaching == false)
         {
-            HandsMove();
-            HandStretch();
+            _isChasing = true;
         }
         //掴まれた時
         else if (_chaching == true)
@@ -100,6 +104,7 @@ public class SyukuHands : MonoBehaviour
             _marimoPa.transform.parent = null;
             _chaching = false;
             _marimoScr.enabled = true;
+            _isChasing = false;
 
             //追加箇所
             // プレイヤーとその子オブジェクトのRigidbodyType2Dを切り替える
@@ -117,6 +122,17 @@ public class SyukuHands : MonoBehaviour
                     childCollider.enabled = true;
                 }
             }
+        }
+
+
+        if(_isChasing && !_chaching)
+    {
+            HandsMove();
+            HandStretch();
+        }
+    else if (_chaching)
+        {
+            HandShrink();
         }
     }
 

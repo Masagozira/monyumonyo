@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Menu : MonoBehaviour
 {
     [SerializeField] public Canvas targetCanvas;
+    [SerializeField] public Image InstructionsImage;
     public PlayerInput _playerInput;
 
     public static bool IsMenuActive { get; private set; } = false;
@@ -45,7 +46,7 @@ public class Menu : MonoBehaviour
     public void InactiveCanvas()
     {
         targetCanvas.gameObject.SetActive(false);
+        InstructionsImage.gameObject.SetActive(false);
         IsMenuActive = false;
-
     }
 }
