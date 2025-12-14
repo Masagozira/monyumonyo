@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// プレイヤーのタグ変更エフェクト管理スクリプト
@@ -35,6 +36,14 @@ public class PlayerEffect : MonoBehaviour
 
     [SerializeField]
     private PlayerInput _playerinput;
+
+    [SerializeField]
+    private Image _OderIcon;
+    [SerializeField]
+    private Image _FlorusIcon;
+    [SerializeField]
+    private Image _currentIcon;
+    private float _currentEffectDuration;
 
     // -------------------------
     //  タグ変更・クールダウン管理
@@ -86,7 +95,7 @@ public class PlayerEffect : MonoBehaviour
             NonChangeTime += Time.deltaTime;
 
             if ((_playerinput.actions["Florus"].triggered ||
-                 _playerinput.actions["Odor"].triggered) 
+                 _playerinput.actions["Odor"].triggered)
                 && NonChangeTime >= NonCooldownTime)
             {
                 NonChangeTime = 0.0f;
@@ -101,6 +110,11 @@ public class PlayerEffect : MonoBehaviour
         if (istag1 || istag2)
         {
             ChangeTime += Time.deltaTime;
+
+            if(_currentIcon != null)
+            {
+                _currentIcon.fillAmount = 1f - (ChangeTime / _currentEffectDuration);
+            }
 
             // 効果時間終了
             if (ChangeTime >= (istag1 ? ChangeTime1 : ChangeTime2))
@@ -119,6 +133,13 @@ public class PlayerEffect : MonoBehaviour
             FloEffect();
             istag1 = true;
             ChangeTime = 0.0f;
+
+            _currentIcon = _FlorusIcon;
+            _currentEffectDuration = ChangeTime1;
+
+            _FlorusIcon.fillAmount = 1f;
+            _FlorusIcon.gameObject.SetActive(true);
+
             Debug.Log("Florus");
         }
 
@@ -130,6 +151,12 @@ public class PlayerEffect : MonoBehaviour
             OdrEffect();
             istag2 = true;
             ChangeTime = 0.0f;
+
+            _currentIcon = _OderIcon;
+            _currentEffectDuration = ChangeTime2;
+
+            _OderIcon.fillAmount = 1f;
+            _OderIcon.gameObject.SetActive(true);
             Debug.Log("Odor");
         }
 
@@ -142,41 +169,42 @@ public class PlayerEffect : MonoBehaviour
     /// <summary>Florusエフェクト</summary>
     public void FloEffect()
     {
-        Vector3 pos = transform.position;
+        var effect = Instantiate(
+            _florusEffect,
+            transform.position,
+            Quaternion.identity,
+            transform
+        );
 
-        Instantiate(_florusEffect, pos, Quaternion.identity, transform);
-
-        Debug.Log("Effect:Flo");
-
-        _florusEffect.Play();
-        _florusEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        effect.Play();
     }
+
 
     /// <summary>Odorエフェクト</summary>
     public void OdrEffect()
-    {
-        Vector3 pos = transform.position;
+{
+    var effect = Instantiate(
+        _odorEffect,
+        transform.position,
+        Quaternion.identity,
+        transform
+    );
+    effect.Play();
+}
 
-        Instantiate(_odorEffect, pos, Quaternion.identity, transform);
-
-        Debug.Log("Effect:Odr");
-
-        _odorEffect.Play();
-        _odorEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-    }
 
     /// <summary>失敗エフェクト</summary>
     public void FailEffect()
-    {
-        Vector3 pos = transform.position;
+{
+    var effect = Instantiate(
+        _failEffect,
+        transform.position,
+        Quaternion.identity,
+        transform
+    );
+    effect.Play();
+}
 
-        Instantiate(_failEffect, pos, Quaternion.identity, transform);
-
-        Debug.Log("Effect:Non");
-
-        _failEffect.Play();
-        _failEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-    }
 
     /// <summary>子オブジェクトのレイヤー出力（デバッグ）</summary>
     void GetLayersRecursiveEff(Transform parent)
@@ -193,6 +221,13 @@ public class PlayerEffect : MonoBehaviour
     {
         istag1 = false;
         istag2 = false;
+
+        if(_currentIcon != null)
+        {
+            _currentIcon.fillAmount = 0f;
+            _currentIcon.gameObject.SetActive(false);
+            _currentIcon = null;
+        }
     }
 
     /// <summary>クールダウン開始</summary>
